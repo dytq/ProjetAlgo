@@ -18,7 +18,7 @@ void affiche_graphe(graphe G){
 			
 			for(j = 0; tmp.list[i]!= NULL && j < TAILLE_GRAPHE; j++)
 			{
-				printf("(s : %d, p : %d) ", tmp.list[i]->voisin, tmp.list[i]->poids);
+				printf("(%d, %d) ", tmp.list[i]->voisin, tmp.list[i]->poids);
 				tmp.list[i] = tmp.list[i]->suiv;
 			}
 			
@@ -73,31 +73,37 @@ liste* insere_debut(liste* L, int voisin, int poids)
 	return lres;
 }
 
+graphe insere(graphe tmp, int i, int j, int poidsMax, int poidsMin) {
+	int k;
+	k = rand()%(poidsMax - poidsMin + 1) + poidsMin;
+	tmp.list[i] = insere_debut(tmp.list[i], j, k);
+	tmp.list[j] = insere_debut(tmp.list[j], i, k);
+	return tmp;
+}
+
 int verifSiSommetInListe(graphe G, int i, int j) {
-	graphe tmp = G;
-	liste* pointeur = tmp.list[i];
-	while(tmp.list[i] != NULL)
+
+	liste* pointeur = G.list[i];
+	while(pointeur != NULL)
 	{
-		if(tmp.list[i]->voisin == j)
+		if(pointeur->voisin == j)
 			return 1;
-		tmp.list[i] = tmp.list[i]->suiv;
+		pointeur = pointeur->suiv;
 	}
-	tmp.list[i] = pointeur;
 	
-	pointeur = tmp.list[j];
-	while(tmp.list[j] != NULL)
+	pointeur = G.list[j];
+	while(pointeur != NULL)
 	{
-		if(tmp.list[j]->voisin == i)
+		if(pointeur->voisin == i)
 			return 1;
-		tmp.list[j] = tmp.list[j]->suiv;
+		pointeur = pointeur->suiv;
 	}
-	tmp.list[j] = pointeur;
+
 	return 0;
 }
-int test_noeuds_max(graphe G, int deb, int fin, int noeudsMax, int etat) {
-	int i;
-	for(i = deb; i < fin; i++)
-	{
+
+int test_noeuds_max(graphe G, int i, int noeudsMax, int etat) {
+
 		if(etat == tier1)
 		{
 			if(G.I.compteur[i][etat] < noeudsMax)
@@ -108,15 +114,17 @@ int test_noeuds_max(graphe G, int deb, int fin, int noeudsMax, int etat) {
 			if(G.I.compteur[i][etat] < noeudsMax &&  G.I.compteur[i][etat] < G.I.proba[i][0])
 				return 1;
 		}
-	}
+
 	return 0;
 }
 
 int calcul_noeuds(graphe G, int sommet, int deb, int fin, int noeudsMax, int etat) {
 	int distance = fin - deb;
-	int pointeur[distance];
-	
+	int pointeur[distance+1];
 	int i, j = 0;
+	for(i = 0; i < distance; i++)
+		pointeur[i] = 0;
+
 	for(i = deb; i < fin; i++)
 	{
 		if(G.I.compteur[i][etat] < noeudsMax 
@@ -128,32 +136,30 @@ int calcul_noeuds(graphe G, int sommet, int deb, int fin, int noeudsMax, int eta
 		}
 	}
 	int a, b;
-	a = rand()%j;
+	b = rand();
+	a = b%j;
 	b = pointeur[a];
 	return b;
 }
 
-graphe calculTier1(graphe G, float p, int deb, int fin, int poids_min, 
-	int poids_max){
+graphe calculTier1(graphe G) {
 	
 	graphe tmp = G;
 	
 	int i, j, k;
-	p = p*1000;
+	int p = 7500;
 	
-	for(i = deb; i < fin ; i++)
+	for(i = debTier1; i < finTier1 ; i++)
 	{
-		for(j = deb; j < fin; j++)
+		for(j = debTier1; j < finTier1; j++)
 		{
 			if(i != j && !verifSiSommetInListe(G, i, j))
 			{
 				k = rand()%1000;
 				if(k < p)
 				{
-					k = rand()%(poids_max - poids_min + 1) + poids_min;
-					tmp.list[i] = insere_debut(tmp.list[i], j, k);
+					tmp = insere(tmp, i, j, poidsMaxTier1, poidsMinTier1);
 					tmp.I.compteur[i][0]++;
-					tmp.list[j] = insere_debut(tmp.list[j], i, k);
 					tmp.I.compteur[j][0]++;
 				}
 			 }
@@ -166,37 +172,29 @@ graphe calculTier2(graphe G){
 		
 	graphe tmp = G;
 	
-	int i, j, k;
+	int i, j;
 	int p, noeuds;
 	
-	for(i = nbTier1; i < nbTier1 + nbTier2 ; i++)
+	for(i = debTier2; i < finTier2; i++)
 	{
 		// pour les arc vers le tier precedent
 		p = rand()%2 + 1;
 		for(j = 0; j < p; j++)
 		{
-				noeuds = calcul_noeuds(tmp, i, ZERO, nbTier1, 100, tier1);
-				k = rand()%(poidsMaxTier2 - poidsMinTier2 + 1) + poidsMinTier2;
-				
-				tmp.list[i] = insere_debut(tmp.list[i], noeuds, k);
-				tmp.I.compteur[i][tier1]++;
-				tmp.list[noeuds] = insere_debut(tmp.list[noeuds], i, k);
-				tmp.I.compteur[noeuds][tier2]++;
+				noeuds = calcul_noeuds(tmp, i, debTier1, finTier1, 100, tier1);
+				tmp = insere(tmp, i, noeuds, poidsMaxTier2, poidsMinTier2);
 		}
 		
 		// pour les arc vers le tier current
 
 		for(j = 0; tmp.I.compteur[i][tier2] < G.I.proba[i][0]; j++)
 		{
-			if(test_noeuds_max(tmp, nbTier1, nbTier1 + nbTier2, noeudsMaxTier2, tier2))
+			if(test_noeuds_max(tmp, i, noeudsMaxTier2, tier2))
 			{
-				noeuds = calcul_noeuds(tmp, i, nbTier1, nbTier1 + nbTier2, noeudsMaxTier2, tier2);
-				k = rand()%(poidsMaxTier2 - poidsMinTier2 + 1) + poidsMinTier2;
-				
-				tmp.list[i] = insere_debut(tmp.list[i], noeuds, k);
-				tmp.I.compteur[i][tier2]++;
-				tmp.list[noeuds] = insere_debut(tmp.list[noeuds], i, k);
-				tmp.I.compteur[noeuds][tier2]++;
+				noeuds = calcul_noeuds(tmp, i, debTier2, finTier2, noeudsMaxTier2, tier2);
+				tmp = insere(tmp, i, noeuds, poidsMaxTier2, poidsMinTier2);
+				tmp.I.compteur[i][1]++;
+				tmp.I.compteur[noeuds][1]++;
 			}
 		}
 	 }
@@ -229,7 +227,7 @@ graphe calculTier3(graphe G){
 
 		for(j = 0; tmp.I.compteur[i][tier3] < G.I.proba[i][0]; j++)
 		{
-			if(test_noeuds_max(tmp, debTier3, finTier3, noeudsMaxTier3, tier3))
+			if(test_noeuds_max(tmp, i, noeudsMaxTier3, tier3))
 			{
 				noeuds = calcul_noeuds(tmp, i, debTier3, finTier3, noeudsMaxTier3, tier3);
 				k = rand()%(poidsMaxTier3 - poidsMinTier3 + 1) + poidsMinTier3;
@@ -265,15 +263,10 @@ int debug(graphe G, int deb, int fin) {
 }
 
 graphe calcul(graphe G) { // juste pour tester
+
 	
-	int deb, fin;
-	deb = ZERO;
-	fin = nbTier1;
-	
-	G = calculTier1(G, 0.75, deb, fin, poidsMinTier1, poidsMaxTier1);
+	G = calculTier1(G);
 	G = calculTier2(G);
-	int d = debug(G, debTier2, finTier2);
-	printf("debug = %d\n", d);
 	G = calculTier3(G);
 	return G;
 }
