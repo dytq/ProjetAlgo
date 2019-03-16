@@ -11,30 +11,52 @@ void affiche_graphe(graphe G){
 	graphe tmp = G; // pour pouvoir parcourir la liste sans y toucher reelment(car pointeur)
 	for(i = 0; i < TAILLE_GRAPHE; i++)
 	{
-		
-		if(tmp.list[i] != NULL)
+		printf("Voisins de %d : \n", i);
+		printf("tier1 : ");
+		if(tmp.list[i][tier1] != NULL)
 		{
-			printf("Voisins de %d : \n", i);
-			
-			for(j = 0; tmp.list[i]!= NULL && j < TAILLE_GRAPHE; j++)
+			for(j = 0; tmp.list[i][tier1]!= NULL && j < TAILLE_GRAPHE; j++)
 			{
-				printf("(%d, %d) ", tmp.list[i]->voisin, tmp.list[i]->poids);
-				tmp.list[i] = tmp.list[i]->suiv;
+				printf("(%d, %d) ", tmp.list[i][tier1]->voisin, tmp.list[i][tier1]->poids);
+				tmp.list[i][tier1] = tmp.list[i][tier1]->suiv;
 			}
-			
-			printf("\n");
 		}
+		printf("\n");
+		
+		printf("tier2 : ");
+		if(tmp.list[i][tier2] != NULL)
+		{
+			for(j = 0; tmp.list[i][tier2]!= NULL && j < TAILLE_GRAPHE; j++)
+			{
+				printf("(%d, %d) ", tmp.list[i][tier2]->voisin, tmp.list[i][tier2]->poids);
+				tmp.list[i][tier2] = tmp.list[i][tier2]->suiv;
+			}
+		}
+		printf("\n");
+		
+		printf("tier3 : ");
+		if(tmp.list[i][tier3] != NULL)
+		{
+			for(j = 0; tmp.list[i][tier3]!= NULL && j < TAILLE_GRAPHE; j++)
+			{
+				printf("(%d, %d) ", tmp.list[i][tier3]->voisin, tmp.list[i][tier3]->poids);
+				tmp.list[i][tier3] = tmp.list[i][tier3]->suiv;
+			}
+		}
+		printf("\n");
 	}
 }
 
 graphe init_graphe(int n){
 	graphe G;
-	G.list = malloc( TAILLE_GRAPHE * sizeof(liste*) );//init juste liste de 100 lister
+	G.list = malloc( TAILLE_GRAPHE * sizeof(liste**) );//init juste liste de 100 lister
 	
 	int i,j,p = 0;
 	for(i = 0; i < TAILLE_GRAPHE; i++) // ini toute les liste de voisin a NULL
 	{
-		G.list[i] = NULL;
+		G.list[i] = malloc( TAILLE_GRAPHE * sizeof(liste*) );
+		for(j = 0; j < 3 ; j++)
+			G.list[i][j] = NULL;
 	}
 	for(i = 0; i < TAILLE_GRAPHE; i++)
 	{
@@ -73,17 +95,17 @@ liste* insere_debut(liste* L, int voisin, int poids)
 	return lres;
 }
 
-graphe insere(graphe tmp, int i, int j, int poidsMax, int poidsMin) {
+graphe insere(graphe tmp, int i,  int j, int poidsMax, int poidsMin, int etat_i, int etat_j) {
 	int k;
 	k = rand()%(poidsMax - poidsMin + 1) + poidsMin;
-	tmp.list[i] = insere_debut(tmp.list[i], j, k);
-	tmp.list[j] = insere_debut(tmp.list[j], i, k);
+	tmp.list[i][etat_j] = insere_debut(tmp.list[i][etat_j], j, k);
+	tmp.list[j][etat_i] = insere_debut(tmp.list[j][etat_i], i, k);
 	return tmp;
 }
 
-int verifSiSommetInListe(graphe G, int i, int j) {
+int verifSiSommetInListe(graphe G, int i, int etat_i, int j, int etat_j) {
 
-	liste* pointeur = G.list[i];
+	liste* pointeur = G.list[i][etat_j];
 	while(pointeur != NULL)
 	{
 		if(pointeur->voisin == j)
@@ -91,7 +113,7 @@ int verifSiSommetInListe(graphe G, int i, int j) {
 		pointeur = pointeur->suiv;
 	}
 	
-	pointeur = G.list[j];
+	pointeur = G.list[j][etat_i];
 	while(pointeur != NULL)
 	{
 		if(pointeur->voisin == i)
@@ -118,7 +140,7 @@ int test_noeuds_max(graphe G, int i, int noeudsMax, int etat) {
 	return 0;
 }
 
-int calcul_noeuds(graphe G, int sommet, int deb, int fin, int noeudsMax, int etat) {
+int calcul_noeuds(graphe G, int sommet, int deb, int fin, int noeudsMax, int etat_sommet, int etat_i) {
 	int distance = fin - deb;
 	int pointeur[distance+1];
 	int i, j = 0;
@@ -127,8 +149,8 @@ int calcul_noeuds(graphe G, int sommet, int deb, int fin, int noeudsMax, int eta
 
 	for(i = deb; i < fin; i++)
 	{
-		if(G.I.compteur[i][etat] < noeudsMax 
-			&& !verifSiSommetInListe(G, sommet, i) 
+		if(G.I.compteur[i][etat_i] < noeudsMax 
+			&& !verifSiSommetInListe(G, sommet, etat_sommet, i, etat_i) 
 			&& i != sommet)
 		{
 			pointeur[j] = i;
@@ -153,12 +175,12 @@ graphe calculTier1(graphe G) {
 	{
 		for(j = debTier1; j < finTier1; j++)
 		{
-			if(i != j && !verifSiSommetInListe(G, i, j))
+			if(i != j && !verifSiSommetInListe(G, i, tier1, j, tier1))
 			{
 				k = rand()%1000;
 				if(k < p)
-				{
-					tmp = insere(tmp, i, j, poidsMaxTier1, poidsMinTier1);
+				{ 
+					tmp = insere(tmp, i, j, poidsMaxTier1, poidsMinTier1, tier1, tier1);
 					tmp.I.compteur[i][0]++;
 					tmp.I.compteur[j][0]++;
 				}
@@ -181,8 +203,8 @@ graphe calculTier2(graphe G){
 		p = rand()%2 + 1;
 		for(j = 0; j < p; j++)
 		{
-				noeuds = calcul_noeuds(tmp, i, debTier1, finTier1, 100, tier1);
-				tmp = insere(tmp, i, noeuds, poidsMaxTier2, poidsMinTier2);
+				noeuds = calcul_noeuds(tmp, i, debTier1, finTier1, 100, tier2, tier1);
+				tmp = insere(tmp, i, noeuds, poidsMaxTier2, poidsMinTier2, tier2, tier1);
 		}
 		
 		// pour les arc vers le tier current
@@ -191,8 +213,8 @@ graphe calculTier2(graphe G){
 		{
 			if(test_noeuds_max(tmp, i, noeudsMaxTier2, tier2))
 			{
-				noeuds = calcul_noeuds(tmp, i, debTier2, finTier2, noeudsMaxTier2, tier2);
-				tmp = insere(tmp, i, noeuds, poidsMaxTier2, poidsMinTier2);
+				noeuds = calcul_noeuds(tmp, i, debTier2, finTier2, noeudsMaxTier2, tier2, tier2);
+				tmp = insere(tmp, i, noeuds, poidsMaxTier2, poidsMinTier2, tier2, tier2);
 				tmp.I.compteur[i][1]++;
 				tmp.I.compteur[noeuds][1]++;
 			}
@@ -214,12 +236,12 @@ graphe calculTier3(graphe G){
 		p = 2;
 		for(j = 0; j < p; j++)
 		{
-				noeuds = calcul_noeuds(tmp, i, debTier2, finTier2, 100, tier2);
+				noeuds = calcul_noeuds(tmp, i, debTier2, finTier2, 100, tier3, tier2);
 				k = rand()%(poidsMaxTier3 - poidsMinTier3 + 1) + poidsMinTier3;
 				
-				tmp.list[i] = insere_debut(tmp.list[i], noeuds, k);
+				tmp.list[i][tier2] = insere_debut(tmp.list[i][tier2], noeuds, k);
 				tmp.I.compteur[i][tier2]++;
-				tmp.list[noeuds] = insere_debut(tmp.list[noeuds], i, k);
+				tmp.list[noeuds][tier3] = insere_debut(tmp.list[noeuds][tier3], i, k);
 				tmp.I.compteur[noeuds][tier3]++;
 		}
 		
@@ -229,37 +251,17 @@ graphe calculTier3(graphe G){
 		{
 			if(test_noeuds_max(tmp, i, noeudsMaxTier3, tier3))
 			{
-				noeuds = calcul_noeuds(tmp, i, debTier3, finTier3, noeudsMaxTier3, tier3);
+				noeuds = calcul_noeuds(tmp, i, debTier3, finTier3, noeudsMaxTier3, tier3, tier3);
 				k = rand()%(poidsMaxTier3 - poidsMinTier3 + 1) + poidsMinTier3;
 				
-				tmp.list[i] = insere_debut(tmp.list[i], noeuds, k);
+				tmp.list[i][tier3] = insere_debut(tmp.list[i][tier3], noeuds, k);
 				tmp.I.compteur[i][tier3]++;
-				tmp.list[noeuds] = insere_debut(tmp.list[noeuds], i, k);
+				tmp.list[noeuds][tier3] = insere_debut(tmp.list[noeuds][tier3], i, k);
 				tmp.I.compteur[noeuds][tier3]++;
 			}
 		}
 	 }
 	return tmp;
-}
-
-int debug(graphe G, int deb, int fin) {
-	liste* pointeur = NULL;
-	int i, n, res = 0;
-	for(i = deb; i < fin ; i++)
-	{
-		pointeur = G.list[i];
-		while(G.list[i] != NULL)
-		{
-			n = G.list[i]->voisin;
-			if(G.list[n] != NULL &&  G.list[n]->voisin == i)
-			{
-				res += 1;
-			}
-			G.list[i] = G.list[i]->suiv;
-		}
-		G.list[i] = pointeur;
-	}
-	return res;	
 }
 
 graphe calcul(graphe G) { // juste pour tester
@@ -278,13 +280,31 @@ void libere_graphe(graphe G){
 	
 	for(i = 0; i < TAILLE_GRAPHE; i++)
 	{
-		pointeur = G.list[i];
+		//tier1
+		pointeur = G.list[i][tier1];
 		for(j = 0; pointeur != NULL && j < TAILLE_GRAPHE; j++)
 		{
-			G.list[i] = pointeur;
+			G.list[i][tier1] = pointeur;
 			free(pointeur);
-			pointeur = G.list[i]->suiv;
+			pointeur = G.list[i][tier1]->suiv;
 		}
+		//tier2
+		pointeur = G.list[i][tier2];
+		for(j = 0; pointeur != NULL && j < TAILLE_GRAPHE; j++)
+		{
+			G.list[i][tier2] = pointeur;
+			free(pointeur);
+			pointeur = G.list[i][tier2]->suiv;
+		}
+		//tier3
+		pointeur = G.list[i][tier3];
+		for(j = 0; pointeur != NULL && j < TAILLE_GRAPHE; j++)
+		{
+			G.list[i][tier3] = pointeur;
+			free(pointeur);
+			pointeur = G.list[i][tier3]->suiv;
+		}
+		free(G.list[i]);
 	}
 	free(G.list);
 }

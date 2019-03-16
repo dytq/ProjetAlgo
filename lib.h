@@ -38,6 +38,6 @@ typedef struct {
 } insert;
 
 typedef struct { //graphe représenté par une liste d'adjacence
-  	liste** list; //pointe vers 100 liste
+  	liste*** list; //pointe vers 100 liste
   	insert I;
 } graphe;
