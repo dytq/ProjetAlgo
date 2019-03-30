@@ -6,20 +6,21 @@
 #include "graph.h"
 #include "affiche.h"
 
-graphe calcul(graphe G) 
+void calcul(graphe* G) 
 {
-	G = calculTier1(G);
-	G = calculTier2(G);
-	G = calculTier3(G);
-	return G;
+	calculTier1(G);
+	calculTier2(G);
+	calculTier3(G);
 }
 
 int main()
 {	
 	srand(time(NULL));
-	graphe G = init_graphe(TAILLE_GRAPHE);
-	G = calcul(G);
+	graphe* G = init_graphe(TAILLE_GRAPHE);
+	
+	calcul(G);
 	affiche_graphe(G);
-	libere_graphe(G);
+
+	free(G);
 	return 0;
 }
