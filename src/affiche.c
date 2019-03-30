@@ -3,31 +3,33 @@
 #include "const.h"
 #include "graph.h"
 
-graphe afficher_tier(graphe tmp,int sommet,const int tier)
+void afficher_tier(graphe* G, int sommet, int deb, int fin)
 {
 	int j;
-	printf("tier%d : ",tier + 1);
-	if(tmp.list[sommet][tier] != NULL)
+
+	for(j = deb; j < fin; j++)
 	{
-		for(j = 0; tmp.list[sommet][tier]!= NULL && j < TAILLE_GRAPHE; j++)
+		if(G->list[sommet][j] != -1)
 		{
-			printf("(%d, %d) ", tmp.list[sommet][tier]->voisin, tmp.list[sommet][tier]->poids);
-			tmp.list[sommet][tier] = tmp.list[sommet][tier]->suiv;
+			printf("(%d,%d) ", j, G->list[sommet][j]);
 		}
 	}
-	return tmp;
+	printf("\n");
 }
 
-void affiche_graphe(graphe G){
+void affiche_graphe(graphe* G){
+	
 	int sommet, i;
-	graphe tmp = G; // pour pouvoir parcourir la liste sans y toucher reelment(car pointeur)
+	
 	for(sommet = 0; sommet < TAILLE_GRAPHE; sommet++)
 	{
 		printf("Voisins de %d : \n", sommet);
-		for(i = 0; i < 3; i++)
-		{
-			tmp = afficher_tier(tmp, sommet, i);
-			printf("\n");
-		}
+		
+		printf("tier1 : ");
+		afficher_tier(G, sommet, debTier1, finTier1);
+		printf("tier2 : ");
+		afficher_tier(G, sommet, debTier2, finTier2);
+		printf("tier3 : ");
+		afficher_tier(G, sommet, debTier3, finTier3);
 	}
 }
