@@ -85,11 +85,15 @@ int calcul_noeuds(graphe* G, int sommet, int deb, int fin, int noeudsMax, int et
 			j++;
 		}
 	}
-	int a, b;
-	b = rand();
-	a = b%j;
-	b = pointeur[a];
-	return b;
+	if(j != 0)
+	{
+		int a, b;
+		b = rand();
+		a = b % j;
+		b = pointeur[a];
+		return b;
+	}
+	return -1;
 }
 
 void calculTier1(graphe* G) {
@@ -133,9 +137,11 @@ void calculTier2(graphe* G){
 		{
 				noeuds = calcul_noeuds(G, i, debTier1, finTier1, 100, tier2, tier1);
 				k = rand()%(poidsMaxTier2 - poidsMinTier2 + 1) + poidsMinTier2;
-				
-				G->list[i][noeuds] = k;
-				G->list[noeuds][i] = k;
+				if(noeuds != -1)
+				{
+					G->list[i][noeuds] = k;
+					G->list[noeuds][i] = k;
+				}
 		}
 		
 		// pour les arc vers le tier current
@@ -147,11 +153,14 @@ void calculTier2(graphe* G){
 				noeuds = calcul_noeuds(G, i, debTier2, finTier2, noeudsMaxTier2, tier2, tier2);
 				k = rand()%(poidsMaxTier2 - poidsMinTier2 + 1) + poidsMinTier2;
 				
-				G->list[i][noeuds] = k;
-				G->list[noeuds][i] = k;
-				
-				G->I.compteur[i][1]++;
-				G->I.compteur[noeuds][1]++;
+				if(noeuds != -1)
+				{
+					G->list[i][noeuds] = k;
+					G->list[noeuds][i] = k;
+					
+					G->I.compteur[i][1]++;
+					G->I.compteur[noeuds][1]++;
+				}
 			}
 		}
 	 }
@@ -171,11 +180,14 @@ void calculTier3(graphe* G){
 				noeuds = calcul_noeuds(G, i, debTier2, finTier2, 100, tier3, tier2);
 				k = rand()%(poidsMaxTier3 - poidsMinTier3 + 1) + poidsMinTier3;
 				
-				G->list[i][noeuds] = k;
-				G->I.compteur[i][tier2]++;
-				
-				G->list[noeuds][i] = k;
-				G->I.compteur[noeuds][tier3]++;
+				if(noeuds != -1)
+				{
+					G->list[i][noeuds] = k;
+					G->I.compteur[i][tier2]++;
+					
+					G->list[noeuds][i] = k;
+					G->I.compteur[noeuds][tier3]++;
+				}
 		}
 		
 		// pour les arc vers le tier current
@@ -187,11 +199,14 @@ void calculTier3(graphe* G){
 				noeuds = calcul_noeuds(G, i, debTier3, finTier3, noeudsMaxTier3, tier3, tier3);
 				k = rand()%(poidsMaxTier3 - poidsMinTier3 + 1) + poidsMinTier3;
 				
-				G->list[i][noeuds] = k;
-				G->I.compteur[i][tier3]++;
-				
-				G->list[noeuds][i] = k;
-				G->I.compteur[noeuds][tier3]++;
+				if(noeuds != -1)
+				{
+					G->list[i][noeuds] = k;
+					G->I.compteur[i][tier3]++;
+					
+					G->list[noeuds][i] = k;
+					G->I.compteur[noeuds][tier3]++;
+				}
 			}
 		}
 	 }
