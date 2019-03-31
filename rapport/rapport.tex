@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{ProjetAlgo}
+\author{Nicolas, Taariq, Théo}
+\date{April 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Le but de ce projet est de créer un une application qui calcul la table de routage de chaque noeuds d'un réseaux de 100 noeuds( graphe de 100 noeuds ). 
+\\Nous avons décidé de faire ce projet avec le language C.
+
+\section{Structure utlilisé}
+
+Nous avons décidé d' utilisé des pointeurs vers les structures au lieux de les passé en argument sans pointeurs.
+
+\subsection{Graphe}
+
+Cette structure contient 2 champs :
+\begin{itemize}
+    \item un tableau qui représente le graphe
+    \item une structure qui permet de bien initialisé le graphe
+\end{itemize}
+
+\subsection{Tableau du graphe}
+
+Ce tableau représente le graphe. Si il y a une arrête entre i et j alors le poids de l'arrête est noté , sinon il y a -1 dans list[i][j] et list[j][i].
+
+\subsection{Insert}
+
+Cette structure permet de bien initialisé le graphe et contient 2 champs :
+\begin{itemize}
+    \item un tableau qui compte le nombre d'arrête vers le même tier
+    \item un tableau où est noté le nombre d'arrête qu'il faut avoir vers le même tier ( est utilisé uniquement pour le tier 2 et 3 )
+\end{itemize}
+
+\subsubsection{Compteur}
+
+Ajoute 1 a la valeut au sommet i a chaque fois qu' on ajoute une arrête vers le même tier.
+
+\subsubsection{Proba}
+
+Ce tableau est initialisé au moment ou on initialise le graphe et permet de savoir combien d' arrêtes il peut y avoir vers un noeuds du même tier. Pour le tier 2 et 3 lorsque on ajoute une arrête entre le sommet i et j il faut aussi l'ajouter de j vers i et sauvegarder qu' il y a une arrête vers le même tier.
+
+\subsection{Table de routage}
+
+Cette structure contient 2 champs : 
+\begin{itemize}
+    \item un tableau qui représente la table de routage avec le poids
+    \item un tableau qui représente les père 
+\end{itemize}
+
+\subsubsection{Poids}
+
+Ce tableau représente le poids minimum pour aller d'un sommet vers un autre. Par exemple prenons i le sommet de départ et j le sommet d' arrivé, poids[i][j] indique le poids minimum pour aller de i à j.
+
+\subsubsection{Père}
+
+Ce tableau reprèsente le père du sommet d' arrivé en prenant compte du plus petit chemin.\\
+Par exemple on prend 3 sommet i, j et k. Le chemin le plus court pour aller de i à j est : i \begin{math}\rightarrow\end{math} ... \begin{math}\rightarrow\end{math} k \begin{math}\rightarrow\end{math} j. Donc dans le tableau pere[i][j] il y aura k.
+
+\section{Création du graphe}
+à faire
+\section{Vérification de la connexité}
+à faire
+\section{Création de la table de routage}
+à faire
+\section{Reconstitution du chemin}
+à faire
+\end{document}
