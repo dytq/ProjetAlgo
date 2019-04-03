@@ -1,2 +1,4 @@
-make
+make lib
+make compil
 ./graph
+make clean

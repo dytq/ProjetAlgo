@@ -1,0 +1,828 @@
+Le script a débuté sur mer. 03 avril 2019 15:12:49 CEST
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 18 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 24 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ make clean
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ cd /t[K[Ké[K~/Bureau/Travail/ProjetAlgo/
+]0;user@debian: ~/Bureau/Travail/ProjetAlgo[01;32muser@debian[00m:[01;34m~/Bureau/Travail/ProjetAlgo[00m$ git add --all
+]0;user@debian: ~/Bureau/Travail/ProjetAlgo[01;32muser@debian[00m:[01;34m~/Bureau/Travail/ProjetAlgo[00m$ git commit -m "commit"
+[master fed2ecc] commit
+ 5 files changed, 16 insertions(+), 4 deletions(-)
+ rewrite src/graph (90%)
+ create mode 100755 src/script
+ create mode 100644 src/typescript
+]0;user@debian: ~/Bureau/Travail/ProjetAlgo[01;32muser@debian[00m:[01;34m~/Bureau/Travail/ProjetAlgo[00m$ git push
+Username for 'https://github.com': Sholde
+Password for 'https://Sholde@github.com': 
+Décompte des objets: 8, fait.
+Compression des objets:  16% (1/6)   Compression des objets:  33% (2/6)   Compression des objets:  50% (3/6)   Compression des objets:  66% (4/6)   Compression des objets:  83% (5/6)   Compression des objets: 100% (6/6)   Compression des objets: 100% (6/6), fait.
+Écriture des objets:  12% (1/8)   Écriture des objets:  25% (2/8)   Écriture des objets:  37% (3/8)   Écriture des objets:  50% (4/8)   Écriture des objets:  62% (5/8)   Écriture des objets:  75% (6/8)   Écriture des objets:  87% (7/8)   Écriture des objets: 100% (8/8)   Écriture des objets: 100% (8/8), 28.43 KiB | 2.37 MiB/s, fait.
+Total 8 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/3)   [Kremote: Resolving deltas:  33% (1/3)   [Kremote: Resolving deltas:  66% (2/3)   [Kremote: Resolving deltas: 100% (3/3)   [Kremote: Resolving deltas: 100% (3/3), completed with 3 local objects.[K
+To https://github.com/Sholde/ProjetAlgo
+   e387d84..fed2ecc  master -> master
+]0;user@debian: ~/Bureau/Travail/ProjetAlgo[01;32muser@debian[00m:[01;34m~/Bureau/Travail/ProjetAlgo[00m$ git push[Kcd ~/Bureau/ProjetAlgo/src/
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ cd ~/Bureau/ProjetAlgo/src/[Kmake
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ sc[K[K.script/script
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+
+Le graphe est connexe
+
+Liste :
+4 -> 1 -> 15 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ls
+affiche.c  connexe.h    [0m[01;32mgraph[0m    libgraph.a  routage.c  struct.h
+affiche.h  connexe.o    graph.c  main.c      routage.h  typescript
+affiche.o  const.h      graph.h  main.o      routage.o
+connexe.c  content.txt  graph.o  Makefile    [01;32mscript[0m
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 18 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 10 -> 11 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 0 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 7 -> 20 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 8 -> 19 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 1 -> 18 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 1 -> 18 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 1 -> 20 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 25 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 14 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 22 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 7 -> 9 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 7 -> 9 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ gdb .gr[K[K/graph
+GNU gdb (Debian 7.12-6) 7.12.0.20161007-git
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./graph...done.
+(gdb) r
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+
+Le graphe est connexe
+
+Liste :
+4 -> 0 -> 14 -> 86
+[Inferior 1 (process 3573) exited normally]
+(gdb) r
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+
+Le graphe est connexe
+
+Liste :
+4 -> 10 -> 86
+[Inferior 1 (process 3577) exited normally]
+(gdb) r
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+^C
+Program received signal SIGINT, Interrupt.
+calcul_noeuds (G=G@entry=0x555555559260, sommet=sommet@entry=27, 
+    deb=deb@entry=8, fin=fin@entry=28, noeudsMax=noeudsMax@entry=3, 
+    etat_sommet=etat_sommet@entry=1, etat_i=1) at graph.c:80
+80			if(G->I.compteur[i][etat_i] < noeudsMax 
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+
+Le graphe est connexe
+
+Liste :
+4 -> 3 -> 23 -> 86
+[Inferior 1 (process 3616) exited normally]
+(gdb) r
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+
+Le graphe est connexe
+
+Liste :
+4 -> 1 -> 21 -> 86
+[Inferior 1 (process 3619) exited normally]
+(gdb) r
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+
+Le graphe est connexe
+
+Liste :
+4 -> 25 -> 86
+[Inferior 1 (process 3620) exited normally]
+(gdb) r
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+
+Le graphe est connexe
+
+Liste :
+4 -> 7 -> 11 -> 86
+[Inferior 1 (process 3621) exited normally]
+(gdb) r
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+
+Le graphe est connexe
+
+Liste :
+4 -> 17 -> 86
+[Inferior 1 (process 3624) exited normally]
+(gdb) r
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+
+Le graphe est connexe
+
+Liste :
+4 -> 24 -> 86
+[Inferior 1 (process 3625) exited normally]
+(gdb) r
+Starting program: /home/user/Bureau/ProjetAlgo/src/graph 
+^C
+Program received signal SIGINT, Interrupt.
+__memset_sse2_unaligned_erms ()
+    at ../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S:191
+191	../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S: Aucun fichier ou dossier de ce type.
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 3626] will be killed.
+
+Quit anyway? (y or n) y
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ gdb ./graph[4P./graphls[K./graphscript
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 0 -> 14 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./scriptgdb ./graph[4P./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 2 -> 26 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 3 -> 22 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graphscript
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 0 -> 18 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+make clean
+^C]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script[1Pgraphscript[Kmake clean
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ make clean[2P./script
+gcc -c -fPIC *.c -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 14 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script
+gcc -c -fPIC *.c -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+^C]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script
+gcc -c -fPIC *.c -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 17 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script
+gcc -c -fPIC *.c -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 3 -> 24 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script[K./script
+gcc -c -fPIC *.c -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 3 -> 22 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 21 -> 83 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 13 -> 25 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 7 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 19 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+^[[A
+
+
+^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ geany script &
+[1] 3934
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ geany script &[7P./graphscript
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -I. -L. -lgraph -Ofast -g3 -Wall
+^C[1]+  Fini                    geany script
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I. -L. -lgraph -o graph main.c -Ofast -g3 -Wall
+/usr/bin/ld: /tmp/ccLcLWHG.o: in function `test_connexe':
+/home/user/Bureau/ProjetAlgo/src/main.c:11: multiple definition of `test_connexe'; ./libgraph.a(main.o):/home/user/Bureau/ProjetAlgo/src/main.c:11: first defined here
+/usr/bin/ld: /tmp/ccLcLWHG.o: in function `calcul_graphe':
+/home/user/Bureau/ProjetAlgo/src/main.c:20: multiple definition of `calcul_graphe'; ./libgraph.a(main.o):/home/user/Bureau/ProjetAlgo/src/main.c:20: first defined here
+/usr/bin/ld: /tmp/ccLcLWHG.o: in function `calcul_routage':
+/home/user/Bureau/ProjetAlgo/src/main.c:27: multiple definition of `calcul_routage'; ./libgraph.a(main.o):/home/user/Bureau/ProjetAlgo/src/main.c:27: first defined here
+/usr/bin/ld: /tmp/ccLcLWHG.o: in function `main':
+/home/user/Bureau/ProjetAlgo/src/main.c:31: multiple definition of `main'; ./libgraph.a(main.o):/home/user/Bureau/ProjetAlgo/src/main.c:31: first defined here
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:12: compil] Error 1
+./script: ligne 3: ./graph: Aucun fichier ou dossier de ce type
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+[01m[Kgcc:[m[K [01;31m[Kerror: [m[Kgraph: Aucun fichier ou dossier de ce type
+make: *** [Makefile:13: compil] Error 1
+./script: ligne 3: ./graph: Aucun fichier ou dossier de ce type
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+[01m[Kgcc:[m[K [01;31m[Kerror: [m[Kgraph: Aucun fichier ou dossier de ce type
+make: *** [Makefile:13: compil] Error 1
+./script: ligne 3: ./graph: Aucun fichier ou dossier de ce type
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ make lib
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ make compik[Kl
+gcc -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ makke[K[K[K[K[K./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 0 -> 14 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 22 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 5 -> 18 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 7 -> 12 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 7 -> 12 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 5 -> 26 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 5 -> 12 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 3 -> 12 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 2 -> 9 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 2 -> 19 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 2 -> 19 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 21 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 26 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+^[[A^[[B^[[B            ^[[D^[[C        ^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 13 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 7 -> 24 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 21 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 19 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 22 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 15 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 16 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 5 -> 18 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 3 -> 13 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 9 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 9 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 1 -> 12 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 14 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 9 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 9 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 17 -> 57 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 21 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graphscript 
+gcc -c -fPIC *.c  -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph  -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 2 -> 26 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script [2Pgraph
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 19 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 26 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 5 -> 13 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+
+Le graphe est connexe
+
+Liste :
+4 -> 5 -> 13 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graph
+^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graphscript 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 14 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 2 -> 23 -> 86
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script [2Pgraph
+^C
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./graphscript 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 7 -> 21 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 5 -> 21 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 1 -> 24 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 26 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 12 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 6 -> 25 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 1 -> 22 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 3 -> 9 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 10 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 16 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 5 -> 9 -> 86
+rm *.o
+rm *.a 
+]0;user@debian: ~/Bureau/ProjetAlgo/src[01;32muser@debian[00m:[01;34m~/Bureau/ProjetAlgo/src[00m$ ./script 
+gcc -c -fPIC *.c -Ofast -g3 -Wall
+ar rcs libgraph.a *.o
+gcc -I -o graph main.c -L. -lgraph -Ofast -g3 -Wall
+
+Le graphe est connexe
+
+Liste :
+4 -> 9 -> 86
+rm *.o
+rm *.a 
+]0;use
