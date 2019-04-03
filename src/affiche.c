@@ -19,7 +19,7 @@ void afficher_tier(graphe* G, int sommet, int deb, int fin)
 
 void affiche_graphe(graphe* G){
 	
-	int sommet, i;
+	int sommet;
 	
 	for(sommet = 0; sommet < TAILLE_GRAPHE; sommet++)
 	{

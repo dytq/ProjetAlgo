@@ -1,8 +1,18 @@
+GCC = gcc
+TAR = ar rcs
+FLAGS = -g3 -Wall
+OPTI = -Ofast
+GRAPH = -I. -L. -lgraph
+
 all: lib compil
 
 lib:
-	gcc -g -c -fPIC *.c
-	ar rcs libgraph.a *.o
+	${GCC} -c -fPIC *.c ${OPTI} ${FLAGS}
+	${TAR} libgraph.a *.o
 
 compil:
-	gcc -I. -o graph main.c -L. -lgraph -g3
+	${GCC} -o graph main.c ${GRAPH} ${OPTI} ${FLAGS}
+	
+clean:
+	rm *.o
+	rm *.a 
