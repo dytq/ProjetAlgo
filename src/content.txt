@@ -1,7 +1,7 @@
 ** Projet Algorithme de graphe **
 
 #0 Installation de la bibliothèque
-Pour installer la bibliothèque executé la commande ./install.sh
+Pour installer la bibliothèque executé la commande ./script
 #1 Execution du programme
 Pour executer le programme faite ./graph
 #2 Description du contenu

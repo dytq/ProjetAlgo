@@ -1,17 +1,49 @@
-GCC = gcc
-TAR = ar rcs
-FLAGS = -g3 -Wall
-OPTI = -Ofast
-GRAPH = -L. -lgraph
-LOC = -I
+# Evite conflit:
+.PHONY: all lib compil clean
 
-lib:
-	${GCC} -c -fPIC *.c ${OPTI} ${FLAGS}
-	${TAR} libgraph.a *.o
+# Constantes:
+WARN = -Wall
+OPTIM = -g3 -Ofast
+GCC = @gcc
+MSG = @echo compilation en cours, création de $@
 
-compil:
-	${GCC} ${LOC} -o graph main.c ${GRAPH} ${OPTI} ${FLAGS}
+# all
+all: run graph main.o affiche.o graph.o connexe.o routage.o clean
+
+# Run:
+run: graph
+	@echo -n lancement du programme:  
+	./graph 
+	@echo fin de programme:
 	
+# Edition de lien du programme principal
+graph: main.o graph.o routage.o connexe.o affiche.o
+	${GCC} -o $@ $^ ${OPTIM} ${WARN}
+	${MSG}: fichier executable
+
+# Compilation du programme principal
+main.o: main.c *.h
+	${GCC} -c ${OPTIM} ${WARN} $*.c
+	${MSG}
+
+# Compilation des fichiers de gestions du programme
+affiche.o: affiche.c *.h
+	${GCC} -c ${OPTIM} ${WARN} $*.c
+	${MSG}
+	
+graph.o: graph.c *.h
+	${GCC} -c ${OPTIM} ${WARN} $*.c
+	${MSG}
+	
+connexe.o: connexe.c *.h
+	${GCC} -c ${OPTIM} ${WARN} $*.c
+	${MSG}
+	
+routage.o: routage.c *.h
+	${GCC} -c ${OPTIM} ${WARN} $*.c
+	${MSG}
+	
+# Netoyage des fichiers
 clean:
-	rm *.o
-	rm *.a 
+	@echo netoyage des données
+	@rm *.o
