@@ -13,3 +13,4 @@ Pour executer le programme faite ./graph
 ##3 const.h       : contient les constantes 
 ##4 affichage.c/h : permet l'affichage du graphe
 ##5 routage.c/h   : gestion de la table de routage
+##6 input.c/h	  : gestion des entrées claviers

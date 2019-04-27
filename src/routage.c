@@ -47,8 +47,8 @@ void Floyd_Warshall(routage* R, int taille) {
 		{
 			for(j = 0; j < taille; j++)
 			{
-				if(R->poids[i][k] != inf && R->poids[k][j] != inf
-					&& (R->poids[i][j] > (R->poids[i][k] + R->poids[k][j])) )
+				if(R->poids[i][k] != inf && R->poids[k][j] != inf			
+					&& (R->poids[i][j] > (R->poids[i][k] + R->poids[k][j])) ) 
 				{
 					R->poids[i][j] = R->poids[i][k] + R->poids[k][j];
 					R->pere[i][j] = k;
