@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+
 #include "const.h"
 #include "graph.h"
 #include "affiche.h"
@@ -27,18 +28,31 @@ void calcul_routage(routage* R) {
 	hash(R, TAILLE_GRAPHE);
 }
 
+int input_keyboard(char * msg)
+{
+	char * buf;
+	buf = malloc(4 * sizeof(char));
+	printf("%s",msg); 
+	scanf("%s",buf);
+	int res = atoi(buf);
+	free(buf);
+	return res;
+}
 int main()
 {	
 	srand(time(NULL));
 	graphe* G = init_graphe(TAILLE_GRAPHE);
 	
 	calcul_graphe(G);
-	
 	test_connexe(G);
 		
 	routage* R = init(G, TAILLE_GRAPHE);
 	calcul_routage(R);
-	affiche_chemin(R, 4, 86);
+	
+	int expediteur = input_keyboard("\nNoeuds émetteur du message: ");
+	int destinataire = input_keyboard("\nNoeuds destinataire: ");
+	
+	affiche_chemin(R,expediteur,destinataire);
 	
 	libere_routage(R);
 	free(G);
