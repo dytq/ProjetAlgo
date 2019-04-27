@@ -13,8 +13,7 @@ void parcours_sommet(graphe* G, int s, int *couleur, int *pere){
 			pere[i] = s;
 			parcours_sommet(G, i, couleur, pere);
 		}
-	couleur[s] = 2;
-			
+	couleur[s] = 2;			
 }
 
 int parcours_graphe(graphe* G){

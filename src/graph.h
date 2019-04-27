@@ -1,5 +1,9 @@
 #include "const.h"
 
+/**
+ * Algorithme de création de graphe selon les modalités de l'énoncé
+ * */
+ 
 typedef struct {
 	int compteur[TAILLE_GRAPHE][3]; 	// >compte nb voisin vers chaque tier dans la liste
 	int proba[TAILLE_GRAPHE][1]; 		// >nb de noeuds vers le meme tier

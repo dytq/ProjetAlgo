@@ -1,5 +1,8 @@
 #include "const.h"
-
+/**
+ * Algorithme de recherche du plus court chemin dans une graphe
+ * */
+ 
 typedef struct {
 	int pere[TAILLE_GRAPHE][TAILLE_GRAPHE];
 	int poids[TAILLE_GRAPHE][TAILLE_GRAPHE];

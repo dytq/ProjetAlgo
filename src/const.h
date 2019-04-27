@@ -1,3 +1,7 @@
+/**
+ * Ensemble de définition des constantes
+ * */
+ 
 #define TAILLE_GRAPHE 100
 #define tier1 0
 #define tier2 1

@@ -1,4 +1,6 @@
-//>Decomposition en affichage si on veut faire un affichage graphique 
+/**
+ * Decomposition en affichage si on veut faire un affichage graphique 
+ * */
 
 // Affiche le graphe
 // @param G graphe à afficher
