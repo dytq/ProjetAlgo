@@ -5,7 +5,7 @@
 WARN = -Wall
 OPTIM = -g3 -Ofast
 GCC = @gcc
-MSG = @echo compilation en cours, création de $@
+MSG = @echo compilation en cours: création de $@
 
 # all
 all: graph main.o affiche.o graph.o connexe.o routage.o clean
@@ -45,5 +45,5 @@ routage.o: routage.c *.h
 	
 # Netoyage des fichiers
 clean:
-	@echo netoyage des données
+	@echo netoyage des données supression de: *.o
 	@rm *.o
