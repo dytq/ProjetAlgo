@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include <string.h>
 
 #include "const.h"
 #include "graph.h"
@@ -28,15 +29,37 @@ void calcul_routage(routage* R) {
 	hash(R, TAILLE_GRAPHE);
 }
 
-int input_keyboard(char * msg)
+int is_quit(char * buf)
 {
-	char * buf;
-	buf = malloc(4 * sizeof(char));
-	printf("%s",msg); 
+	if(strcmp(buf,"quit") == 1) 
+	{
+		free(buf);
+		return -1;
+	}
+	return 1;
+}
+
+int input_value(int * dest)
+{
+	char * buf = malloc(5 * sizeof(char));
+	if(!(*dest = *dest ^ 1)) printf("Entrée valeur destinataire: ");
+	else printf("Entrée valeur expéditeur: ");
 	scanf("%s",buf);
+	if(is_quit(buf) == -1 ) return -1;
 	int res = atoi(buf);
 	free(buf);
 	return res;
+}
+
+void input_keyboard(routage * R)
+{
+	int in,out;
+	int is_dest = 0;
+	while(1)
+		if((in = input_value(&is_dest)) != -1  && (out = input_value(&is_dest)) != -1) 
+		{
+			affiche_chemin(R,in,out);
+		} else break;
 }
 int main()
 {	
@@ -49,10 +72,7 @@ int main()
 	routage* R = init(G, TAILLE_GRAPHE);
 	calcul_routage(R);
 	
-	int expediteur = input_keyboard("\nNoeuds émetteur du message: ");
-	int destinataire = input_keyboard("\nNoeuds destinataire: ");
-	
-	affiche_chemin(R,expediteur,destinataire);
+	input_keyboard(R);
 	
 	libere_routage(R);
 	free(G);
