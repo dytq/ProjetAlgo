@@ -31,7 +31,7 @@ int input_value(int * dest)
 		scanf("%s",buf); 										// Récupération de la chaine de caractere sur le terminal
 		if(is_quit(buf) == -1 ) return -1; 						// envoie signal pour quitter le programme
 		res = atoi(buf); 										// convertion chaine de caractere en entier
-		if(in_graph(res) == -1) printf("erreur reessayer:");	// si non valide alors afficher erreur à l'utilisateur
+		if(in_graph(res) == -1) printf("desoler valeur non reconnue veuillez reessayer:");	// si non valide alors afficher erreur à l'utilisateur
 		
 	} while(in_graph(res) == -1);   // Tant que valide
 	
