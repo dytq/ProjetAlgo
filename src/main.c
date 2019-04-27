@@ -48,7 +48,7 @@ int input_value(int * dest)
 {
 	char * buf = malloc(5 * sizeof(char));
 	if(!(*dest = *dest ^ 1)) printf("Entrée valeur destinataire: ");
-	else printf("Entrée valeur expéditeur: ");
+	else printf("Entrée valeur expediteur: ");
 	scanf("%s",buf);
 	if(is_quit(buf) == -1 ) return -1;
 	int res = atoi(buf);
