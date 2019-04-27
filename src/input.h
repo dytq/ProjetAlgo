@@ -1,3 +1,4 @@
+/* Gestion des entrées clavier */ 
 
 /**
  * Fonction qui permet de vérifié si l'utilisateur veut quitter

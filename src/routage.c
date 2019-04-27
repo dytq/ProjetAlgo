@@ -38,7 +38,7 @@ routage* init(graphe* G, int taille) {
 	return R;
 }
 
-void hash(routage* R, int taille) {
+void Floyd_Warshall(routage* R, int taille) {
 	int i, j, k;
 	
 	for(k = 0; k < taille; k++)

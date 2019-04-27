@@ -1,7 +1,7 @@
 ** Projet Algorithme de graphe **
 
-#0 Installation de la bibliothèque
-Pour installer la bibliothèque executé la commande make
+#0 Compilation du projet
+Pour compiler executé la commande make
 
 #1 Execution du programme
 Pour executer le programme faite ./graph

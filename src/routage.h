@@ -10,7 +10,7 @@ typedef struct {
 
 routage* init(graphe* G, int taille);
 
-void hash(routage* R, int taille);
+void Floyd_Warshall(routage* R, int taille);
 
 void affichage(routage* R, int taille);
 

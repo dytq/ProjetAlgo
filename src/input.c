@@ -3,17 +3,18 @@
 #include <stdlib.h>
 
 #include "input.h"
+#include "const.h"
 
-#define in_graph(a) (((a) < 0) || ((a) > 100)) ? -1 : (a)
+#define in_graph(a) (((a) < 0) || ((a) > TAILLE_GRAPHE)) ? -1 : (a)
 
 int is_quit(char * buf)
 {
 	if(!(strcmp(buf,"quit"))) 
 	{
 		free(buf);
-		return -1;
+		return 1;
 	}
-	return 1;
+	return 0;
 }
 
 int input_value(int * dest)
@@ -29,7 +30,7 @@ int input_value(int * dest)
 	
 	do{
 		scanf("%s",buf); 										// Récupération de la chaine de caractere sur le terminal
-		if(is_quit(buf) == -1 ) return -1; 						// envoie signal pour quitter le programme
+		if(is_quit(buf)) return -1; 						// envoie signal pour quitter le programme
 		res = atoi(buf); 										// convertion chaine de caractere en entier
 		if(in_graph(res) == -1) printf("desoler valeur non reconnue veuillez reessayer:");	// si non valide alors afficher erreur à l'utilisateur
 		

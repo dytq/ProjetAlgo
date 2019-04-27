@@ -32,18 +32,13 @@ void calcul_graphe(graphe* G)
 }
 
 void calcul_routage(routage* R) {
-	hash(R, TAILLE_GRAPHE);
+	Floyd_Warshall(R, TAILLE_GRAPHE);
 }
 
 void input_keyboard(routage * R)
 {
-	int in,out;
-	int is_dest = 0;
-	while(1)
-	{
-		if((in = input_value(&is_dest)) != -1  && (out = input_value(&is_dest)) != -1) 	affiche_chemin(R,in,out);
-		else break;
-	}
+	int in,out,is_dest = 0;
+	while(((in = input_value(&is_dest)) != -1  && (out = input_value(&is_dest)) != -1)) affiche_chemin(R,in,out);
 }
 
 int main()
@@ -52,10 +47,10 @@ int main()
 	graphe* G = init_graphe(TAILLE_GRAPHE);
 	
 	calcul_graphe(G);
+	
 	if(test_connexe(G)){
 		routage* R = init(G, TAILLE_GRAPHE);
 		calcul_routage(R);
-		
 		input_keyboard(R);
 		libere_routage(R);
 	}
