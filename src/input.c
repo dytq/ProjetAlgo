@@ -9,17 +9,12 @@
 
 int is_quit(char * buf)
 {
-	if(!(strcmp(buf,"quit"))) 
-	{
-		free(buf);
-		return 1;
-	}
+	if(!(strcmp(buf,"quit")))  return 1;
 	return 0;
 }
 
-int input_value(int * dest)
+int input_value(int * dest,char * buf)
 {
-	char * buf = malloc(5 * sizeof(char));		// > pour stoker l'entrée
 	int res;
 	
 	if(!(*dest = *dest ^ 1)) 					// > dest change de valeur à chaque fois qu'on appelle la fonction input_value 
@@ -31,11 +26,12 @@ int input_value(int * dest)
 	do{
 		scanf("%s",buf); 										// Récupération de la chaine de caractere sur le terminal
 		if(is_quit(buf)) return -1; 						// envoie signal pour quitter le programme
+		
 		res = atoi(buf); 										// convertion chaine de caractere en entier
 		if(in_graph(res) == -1) printf("desoler valeur non reconnue veuillez reessayer:");	// si non valide alors afficher erreur à l'utilisateur
 		
 	} while(in_graph(res) == -1);   // Tant que valide
 	
-	free(buf);
+
 	return res; 
 }

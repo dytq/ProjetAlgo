@@ -38,7 +38,9 @@ void calcul_routage(routage* R) {
 void input_keyboard(routage * R)
 {
 	int in,out,is_dest = 0;
-	while(((in = input_value(&is_dest)) != -1  && (out = input_value(&is_dest)) != -1)) affiche_chemin(R,in,out);
+	char * buf = malloc(32 * sizeof(char));		// > pour stoker l'entrée
+	while(((in = input_value(&is_dest,buf)) != -1  && (out = input_value(&is_dest,buf)) != -1)) affiche_chemin(R,in,out);
+	free(buf);
 }
 
 int main()
