@@ -40,10 +40,10 @@ void input_keyboard(routage * R)
 	int in,out;
 	int is_dest = 0;
 	while(1)
-		if((in = input_value(&is_dest)) != -1  && (out = input_value(&is_dest)) != -1) 
-		{
-			affiche_chemin(R,in,out);
-		} else break;
+	{
+		if((in = input_value(&is_dest)) != -1  && (out = input_value(&is_dest)) != -1) 	affiche_chemin(R,in,out);
+		else break;
+	}
 }
 
 int main()
