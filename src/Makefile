@@ -8,10 +8,10 @@ GCC = @gcc
 MSG = @echo compilation en cours, création de $@
 
 # all
-all: run graph main.o affiche.o graph.o connexe.o routage.o clean
+all: graph main.o affiche.o graph.o connexe.o routage.o clean
 
 # Run:
-run: graph
+run: 
 	@echo -n lancement du programme:  
 	./graph 
 	@echo fin de programme:
