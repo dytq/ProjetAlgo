@@ -8,6 +8,7 @@
 #include "affiche.h"
 #include "connexe.h"
 #include "routage.h"
+#include "input.h"
 
 int test_connexe(graphe* G) {
 	int connexe = parcours_graphe(G);
@@ -32,28 +33,6 @@ void calcul_graphe(graphe* G)
 
 void calcul_routage(routage* R) {
 	hash(R, TAILLE_GRAPHE);
-}
-
-int is_quit(char * buf)
-{
-	if(strcmp(buf,"quit") == 0) 
-	{
-		free(buf);
-		return -1;
-	}
-	return 1;
-}
-
-int input_value(int * dest)
-{
-	char * buf = malloc(5 * sizeof(char));
-	if(!(*dest = *dest ^ 1)) printf("Entrée valeur destinataire: ");
-	else printf("Entrée valeur expediteur: ");
-	scanf("%s",buf);
-	if(is_quit(buf) == -1 ) return -1;
-	int res = atoi(buf);
-	free(buf);
-	return res;
 }
 
 void input_keyboard(routage * R)

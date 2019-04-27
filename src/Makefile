@@ -8,7 +8,7 @@ GCC = @gcc
 MSG = @echo compilation en cours: création de $@
 
 # all
-all: graph main.o affiche.o graph.o connexe.o routage.o clean
+all: graph main.o affiche.o graph.o connexe.o routage.o input.o clean
 
 # Run:
 run: 
@@ -17,7 +17,7 @@ run:
 	@echo fin de programme:
 	
 # Edition de lien du programme principal
-graph: main.o graph.o routage.o connexe.o affiche.o
+graph: main.o graph.o routage.o connexe.o affiche.o input.o
 	${GCC} -o $@ $^ ${OPTIM} ${WARN}
 	${MSG}: fichier executable
 
@@ -30,7 +30,7 @@ main.o: main.c *.h
 affiche.o: affiche.c *.h
 	${GCC} -c ${OPTIM} ${WARN} $*.c
 	${MSG}
-	
+
 graph.o: graph.c *.h
 	${GCC} -c ${OPTIM} ${WARN} $*.c
 	${MSG}
@@ -40,6 +40,10 @@ connexe.o: connexe.c *.h
 	${MSG}
 	
 routage.o: routage.c *.h
+	${GCC} -c ${OPTIM} ${WARN} $*.c
+	${MSG}
+	
+input.o: input.c *.h
 	${GCC} -c ${OPTIM} ${WARN} $*.c
 	${MSG}
 	
