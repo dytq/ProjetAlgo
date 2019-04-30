@@ -6,9 +6,9 @@ WARN = -Wall
 OPTIM = -g3 -Ofast
 GCC = @gcc
 MSG = @echo compilation en cours: création de $@
-
+FLAME = -std=c99 -O2 -ffast-math flame.c -lm -lX11
 # all
-all: graph main.o affiche.o graph.o connexe.o routage.o input.o clean
+all: graph main.o affiche.o graph.o connexe.o routage.o flame.o moteur_graphique.o clean
 
 # Run:
 run: 
@@ -17,8 +17,8 @@ run:
 	@echo fin de programme:
 	
 # Edition de lien du programme principal
-graph: main.o graph.o routage.o connexe.o affiche.o input.o
-	${GCC} -o $@ $^ ${OPTIM} ${WARN}
+graph: main.o graph.o routage.o connexe.o affiche.o moteur_graphique.o
+	${GCC} -o $@ $^ ${OPTIM} ${WARN} ${FLAME}
 	${MSG}: fichier executable
 
 # Compilation du programme principal
@@ -43,10 +43,14 @@ routage.o: routage.c *.h
 	${GCC} -c ${OPTIM} ${WARN} $*.c
 	${MSG}
 	
-input.o: input.c *.h
+flame.o: flame.c *.h
 	${GCC} -c ${OPTIM} ${WARN} $*.c
 	${MSG}
-	
+
+moteur_graphique.o: moteur_graphique.c *.h
+	${GCC} -c ${OPTIM} ${WARN} $*.c
+	${MSG}
+
 # Netoyage des fichiers
 clean:
 	@echo netoyage des données supression de: *.o

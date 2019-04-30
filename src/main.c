@@ -8,7 +8,6 @@
 #include "affiche.h"
 #include "connexe.h"
 #include "routage.h"
-#include "input.h"
 
 int test_connexe(graphe* G) {
 	int connexe = parcours_graphe(G);
@@ -35,27 +34,19 @@ void calcul_routage(routage* R) {
 	Floyd_Warshall(R, TAILLE_GRAPHE);
 }
 
-void input_keyboard(routage * R)
-{
-	int in,out,is_dest = 0;
-	char * buf = malloc(32 * sizeof(char));		// > pour stoker l'entrée
-	while(((in = input_value(&is_dest,buf)) != -1  && (out = input_value(&is_dest,buf)) != -1)) affiche_chemin(R,in,out);
-	free(buf);
-}
-
 int main()
 {	
 	srand(time(NULL));
 	graphe* G = init_graphe(TAILLE_GRAPHE);
 	
 	calcul_graphe(G);
-	
-	if(test_connexe(G)){
-		routage* R = init(G, TAILLE_GRAPHE);
-		calcul_routage(R);
-		input_keyboard(R);
-		libere_routage(R);
-	}
+		
+	//~ if(test_connexe(G)){
+		//~ routage* R = init(G, TAILLE_GRAPHE);
+		//~ calcul_routage(R);
+		gestion_fenetre_graphique(G); // fonction bloquante
+		//~ libere_routage(R);
+	//~ }
 	free(G);
 	return 0;
 }
