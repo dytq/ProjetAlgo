@@ -85,25 +85,6 @@ void affichage(routage* R, int taille) {
 	printf("\n");
 }
 
-
-void affiche_chemin(routage* R, int deb, int fin) {
-	int i;
-	int voisin[TAILLE_GRAPHE] = {-1};
-	
-	for(i = 0; deb != fin && i < TAILLE_GRAPHE; i++)
-	{
-		voisin[i] = fin;
-		fin = R->pere[deb][fin];
-	}
-	i--;
-	printf("\nListe :\n%d", deb);
-	for(; voisin[i] != -1 && i >= 0; i--)
-	{
-		printf(" -> %d", voisin[i]);
-	}
-	printf("\n");
-}
-
 void libere_routage(routage* R) {
 	
 	free(R);

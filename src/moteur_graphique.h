@@ -3,7 +3,7 @@
 #define TAILLE_ECRAN_HAUTEUR 700
 #define TAILLE_ECRAN_LARGEUR 800
 
-#define TAILLE_CERCLE ((TAILLE_ECRAN_HAUTEUR + TAILLE_ECRAN_LARGEUR) / 2) / 40
+#define TAILLE_CERCLE 20
 
 /* Définir la couleur 8 bits */
 typedef unsigned char byte;

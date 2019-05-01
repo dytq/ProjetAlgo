@@ -4,6 +4,7 @@
 #include "const.h"
 #include "graph.h"
 #include "moteur_graphique.h"
+#include "routage.h"
 
 void afficher_voisin(graphe* G, flame_obj_t * fo, cercle_t * c,int sommet, int deb, int fin)
 {
@@ -73,11 +74,35 @@ void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c)
 }
 int trouve_id(int x,int y)
 {
-	return (x / (3 * TAILLE_CERCLE)) + (y / (3*TAILLE_CERCLE));
+	x -= (2 * TAILLE_CERCLE);
+	y -= (2 * TAILLE_CERCLE);
+	return ((y / (3 * TAILLE_CERCLE))*10) + (x / (3*TAILLE_CERCLE));
 }
-void interaction_joueur(graphe * G,flame_obj_t * fo,cercle_t * c)
+
+void affiche_chemin(flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin) {
+	int i;
+	int voisin[TAILLE_GRAPHE] = {-1};
+	
+	for(i = 0; deb != fin && i < TAILLE_GRAPHE; i++)
+	{
+		voisin[i] = fin;
+		fin = R->pere[deb][fin];
+	}
+	i--;
+	for(; voisin[i] != -1 && i >= 0; i--)
+	{
+		afficher_connexion(fo,c,deb,voisin[i],JAUNE);
+		deb = voisin[i];
+	}
+}
+
+
+void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 {
 	XEvent event;
+	int cmp = 1;
+	int id_1 = 0;
+	int id_2 = 0;
 	
 	//flame_clear_display(fo);
 	
@@ -93,15 +118,27 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,cercle_t * c)
 		  {
 				click_x = event.xkey.x;
 				click_y = event.xkey.y;	
-				printf("%d ",trouve_id(click_x,click_y));
 				colorer_cercle(&c[trouve_id(click_x,click_y)],JAUNE);
-				remplir_cercle(fo,&c[trouve_id(click_x,click_y)]);
+				afficher_cercle(fo,&c[trouve_id(click_x,click_y)]);
+				if(cmp == 0) id_1 = trouve_id(click_x,click_y);
+				else id_2 = trouve_id(click_x,click_y);
+				cmp ++;
 		  }
+		if(cmp == 1)
+		{
+			cmp = 0;
+			affiche_chemin(fo,R,c,id_1,id_2);
+		}
+		else
+		{
+			//initialisation_objets_graphique(G,fo,c);
+			//usleep(100000); 
+		}  
 	  }
   }
 }
-	
-void gestion_fenetre_graphique(graphe* G)
+
+void gestion_fenetre_graphique(graphe* G, routage *R)
 {
 	// > Initialisation du canvas:
 	flame_obj_t * fo = init_canvas();
@@ -110,6 +147,6 @@ void gestion_fenetre_graphique(graphe* G)
 	
 	initialisation_objets_graphique(G,fo,c);
 	
-	interaction_joueur(G,fo,c);
+	interaction_joueur(G,fo,R,c);
 	flame_close(fo);
 }

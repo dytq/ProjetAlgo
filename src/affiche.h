@@ -11,6 +11,6 @@ void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c);
 
 int trouve_id(int x,int y);
 
-void interaction_joueur(graphe * G,flame_obj_t * fo,cercle_t * c);
+//void interaction_joueur(graphe * G,flame_obj_t * fo,cercle_t * c);
 
-void gestion_fenetre_graphique(graphe* G);
+//void gestion_fenetre_graphique(graphe* G, routage *R)

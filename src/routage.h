@@ -44,4 +44,4 @@ void libere_routage(routage* R);
  * @param premier noeud de départ
  * @param dernier noeud d'arrivé
  * */
-void affiche_chemin(routage* R, int deb, int fin);
+//void affiche_chemin(routage* R, int deb, int fin);
