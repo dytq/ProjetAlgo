@@ -128,6 +128,7 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 		{
 			cmp = 0;
 			affiche_chemin(fo,R,c,id_1,id_2);
+			afficher_chemin(R,id_1,id_2);
 		}
 		else
 		{

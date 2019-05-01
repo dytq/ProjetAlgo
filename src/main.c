@@ -45,6 +45,7 @@ int main()
 		routage* R = init(G, TAILLE_GRAPHE);
 		calcul_routage(R);
 		gestion_fenetre_graphique(G,R); // fonction bloquante
+		afficher_chemin(R,4,84);
 		libere_routage(R);
 	}
 	free(G);
