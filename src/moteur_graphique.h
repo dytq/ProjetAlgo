@@ -29,7 +29,8 @@ enum couleur{
 	VERT,
 	BLEU,
 	BLANC,
-	JAUNE
+	JAUNE,
+	GRIS
 };
 
 /* Permet d'afficher un cercle rempli*/

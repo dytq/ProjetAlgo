@@ -14,7 +14,7 @@ void afficher_voisin(graphe* G, flame_obj_t * fo, cercle_t * c,int sommet, int d
 	{
 		if(G->list[sommet][j] != -1)
 		{
-			//afficher_connexion(fo,c,j,G->list[sommet][j],BLANC);
+			afficher_connexion(fo,c,j,G->list[sommet][j],GRIS);
 		}
 	}
 }
@@ -100,7 +100,7 @@ void affiche_chemin(flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin) 
 void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 {
 	XEvent event;
-	int cmp = 1;
+	int cmp = 0;
 	int id_1 = 0;
 	int id_2 = 0;
 	
@@ -120,7 +120,7 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 				click_y = event.xkey.y;	
 				colorer_cercle(&c[trouve_id(click_x,click_y)],JAUNE);
 				afficher_cercle(fo,&c[trouve_id(click_x,click_y)]);
-				if(cmp == 1) id_1 = trouve_id(click_x,click_y);
+				if(cmp == 0) id_1 = trouve_id(click_x,click_y);
 				else id_2 = trouve_id(click_x,click_y);
 				cmp ++;
 		  }
