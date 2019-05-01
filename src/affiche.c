@@ -96,15 +96,12 @@ void affiche_chemin(flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin) 
 	}
 }
 
-
 void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 {
 	XEvent event;
 	int cmp = 0;
 	int id_1 = 0;
 	int id_2 = 0;
-	
-	//flame_clear_display(fo);
 	
 	int click_x, click_y;
 	
@@ -130,11 +127,6 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 			affiche_chemin(fo,R,c,id_1,id_2);
 			afficher_chemin(R,id_1,id_2);
 		}
-		else
-		{
-			//initialisation_objets_graphique(G,fo,c);
-			//usleep(100000); 
-		}  
 	  }
   }
 }

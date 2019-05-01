@@ -7,7 +7,6 @@
 #include "graph.h"
 #include "affiche.h"
 #include "connexe.h"
-#include "routage.h"
 
 int test_connexe(graphe* G) {
 	int connexe = parcours_graphe(G);

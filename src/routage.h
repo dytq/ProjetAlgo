@@ -1,4 +1,3 @@
-#include "const.h"
 /**
  * Algorithme de recherche du plus court chemin dans une graphe
  * */
