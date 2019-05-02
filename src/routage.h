@@ -1,3 +1,4 @@
+#include "const.h"
 /**
  * Algorithme de recherche du plus court chemin dans une graphe
  * */
@@ -6,7 +7,7 @@
  * Structure de donnée pour sauvegarder la table de root (2 matrices)
  * */
 typedef struct {
-	int pere[TAILLE_GRAPHE][TAILLE_GRAPHE];
+	int succ[TAILLE_GRAPHE][TAILLE_GRAPHE];
 	int poids[TAILLE_GRAPHE][TAILLE_GRAPHE];
 } routage;
 

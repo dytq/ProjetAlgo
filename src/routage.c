@@ -19,13 +19,15 @@ routage* init(graphe* G, int taille) {
 		for(j = 0; j < taille; ++j)
 		{
 			R->poids[i][j] = G->list[i][j];
-			if(R->poids[i][j] != -1)
+			
+			if(R->poids[i][j] == -1)
 			{
-				R->pere[i][j] = i;
+				R->poids[i][j] = inf;
+				R->succ[i][j] = -1;
 			}
 			else
 			{
-				R->poids[i][j] = inf;
+				R->succ[i][j] = j;
 			}
 		}
 	}
@@ -33,7 +35,7 @@ routage* init(graphe* G, int taille) {
 	for(i = 0; i < taille; ++i)
 	{
 		R->poids[i][i] = 0;
-		R->pere[i][i] = i;
+		R->succ[i][i] = i;
 	}
 	return R;
 }
@@ -51,7 +53,7 @@ void Floyd_Warshall(routage* R, int taille) {
 					&& (R->poids[i][j] > (R->poids[i][k] + R->poids[k][j])) ) 
 				{
 					R->poids[i][j] = R->poids[i][k] + R->poids[k][j];
-					R->pere[i][j] = k;
+					R->succ[i][j] = R->succ[i][k];
 				}
 				
 			}
@@ -60,50 +62,61 @@ void Floyd_Warshall(routage* R, int taille) {
 }
 
 void affichage(routage* R, int taille) {
-	int i, j;
-	printf("Matrice :\n");
+	//~ int i, j;
+	//~ printf("Matrice :\n");
 	
-	for(i = 0; i < taille; ++i)
-	{
-		for(j = 0; j < taille; ++j)
-		{
-			printf("|%3d|", R->poids[i][j]);
-		}
-		printf("\n");
-	}
-	printf("\n");
+	//~ for(i = 0; i < taille; ++i)
+	//~ {
+		//~ for(j = 0; j < taille; ++j)
+		//~ {
+			//~ printf("|%3d|", R->poids[i][j]);
+		//~ }
+		//~ printf("\n");
+	//~ }
+	//~ printf("\n");
 	
-	printf("Pere :\n");
-	for(i = 0; i < taille; ++i)
-	{
-		for(j = 0; j < taille; ++j)
-		{
-			printf("|S%2d|", R->pere[i][j]);
-		}
-		printf("\n");
-	}
-	printf("\n");
+	//~ printf("Pere :\n");
+	//~ for(i = 0; i < taille; ++i)
+	//~ {
+		//~ for(j = 0; j < taille; ++j)
+		//~ {
+			//~ printf("|S%2d|", R->pere[i][j]);
+		//~ }
+		//~ printf("\n");
+	//~ }
+	//~ printf("\n");
 }
 
 void libere_routage(routage* R) {
 	
 	free(R);
- }
+}
 
 void afficher_chemin(routage* R, int deb, int fin) {
-	int i;
+	int stock_deb = deb;
 	int voisin[TAILLE_GRAPHE] = {-1};
-
-	for(i = 0; deb != fin && i < TAILLE_GRAPHE; i++)
+	
+	int i, suiv = R->succ[deb][fin];
+	for(i = 0; suiv != fin && i < TAILLE_GRAPHE; i++)
+	{
+		deb = R->succ[deb][fin];
+		voisin[i] = deb;
+		suiv = R->succ[deb][fin];
+	}
+	
+	if(suiv == fin)
 	{
 		voisin[i] = fin;
-		fin = R->pere[deb][fin];
+		
+		printf("\nListe :\n%d", stock_deb);
+		for(int j = 0 ; j < i+1; j++)
+		{
+			printf(" -> %d", voisin[j]);
+		}
+		printf("\n");
 	}
-	i--;
-	printf("\nListe :\n%d", deb);
-	for(; voisin[i] != -1 && i >= 0; i--)
+	else
 	{
-		printf(" -> %d", voisin[i]);
+		printf("error\n");
 	}
-	printf("\n");
 }

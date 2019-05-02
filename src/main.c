@@ -5,8 +5,9 @@
 
 #include "const.h"
 #include "graph.h"
-#include "affiche.h"
 #include "connexe.h"
+#include "routage.h"
+#include "affiche.h"
 
 int test_connexe(graphe* G) {
 	int connexe = parcours_graphe(G);
@@ -44,7 +45,6 @@ int main()
 		routage* R = init(G, TAILLE_GRAPHE);
 		calcul_routage(R);
 		gestion_fenetre_graphique(G,R); // fonction bloquante
-		afficher_chemin(R,4,84);
 		libere_routage(R);
 	}
 	free(G);

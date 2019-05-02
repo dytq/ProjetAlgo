@@ -14,11 +14,9 @@ void afficher_voisin(graphe* G, flame_obj_t * fo, cercle_t * c,int sommet, int d
 	{
 		if(G->list[sommet][j] != -1)
 		{
-			afficher_connexion(fo,c,sommet,j,GRIS);
-			printf("(%d,%d) ", j, G->list[sommet][j]);
+			afficher_connexion(fo,c,j,G->list[sommet][j],GRIS);
 		}
 	}
-	printf("\n");
 }
 
 
@@ -68,13 +66,9 @@ void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c)
 	
 	for (noeud = 0; noeud < TAILLE_GRAPHE; noeud++)
 	{
-		printf("Voisins de %d : \n", noeud);
 		afficher_cercle(fo, &c[noeud]);
-		printf("tier1 : ");
 		afficher_voisin(G, fo, c, noeud, debTier1, finTier1);
-		printf("tier2 : ");
 		afficher_voisin(G, fo, c, noeud, debTier2, finTier2);
-		printf("tier3 : ");
 		afficher_voisin(G, fo, c, noeud, debTier3, finTier3);
 	}	
 }
@@ -85,29 +79,48 @@ int trouve_id(int x,int y)
 	return ((y / (3 * TAILLE_CERCLE))*10) + (x / (3*TAILLE_CERCLE));
 }
 
-void affiche_chemin(flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin) {
-	int i;
+void affiche_chemin (flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin) {
 	int voisin[TAILLE_GRAPHE] = {-1};
 	
-	for(i = 0; deb != fin && i < TAILLE_GRAPHE; i++)
+	int i = 0, suiv = R->succ[deb][fin];
+	voisin[i] = deb;
+	
+	for(i = 1; suiv != fin && i < TAILLE_GRAPHE; i++)
+	{
+		deb = R->succ[deb][fin];
+		voisin[i] = deb;
+		suiv = R->succ[deb][fin];
+	}
+	
+	if(suiv == fin)
 	{
 		voisin[i] = fin;
-		fin = R->pere[deb][fin];
+		
+		int d, e, j;
+		printf("\nListe :\n");
+		for(j = 0 ; j < i; j++)
+		{
+			d = voisin[j]; e = voisin[j+1];
+			afficher_connexion(fo, c, d, e, JAUNE);
+			printf("%d -> ", voisin[j]);
+		}
+		printf("%d\n", voisin[j]);
 	}
-	i--;
-	for(; voisin[i] != -1 && i >= 0; i--)
+	else
 	{
-		afficher_connexion(fo,c,deb,voisin[i],JAUNE);
-		deb = voisin[i];
+		printf("error\n");
 	}
 }
 
-void interaction_utilisateur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
+
+void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 {
 	XEvent event;
 	int cmp = 0;
 	int id_1 = 0;
 	int id_2 = 0;
+	
+	//flame_clear_display(fo);
 	
 	int click_x, click_y;
 	
@@ -133,6 +146,11 @@ void interaction_utilisateur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * 
 			affiche_chemin(fo,R,c,id_1,id_2);
 			afficher_chemin(R,id_1,id_2);
 		}
+		else
+		{
+			//initialisation_objets_graphique(G,fo,c);
+			//usleep(100000); 
+		}  
 	  }
   }
 }
@@ -146,6 +164,6 @@ void gestion_fenetre_graphique(graphe* G, routage *R)
 	
 	initialisation_objets_graphique(G,fo,c);
 	
-	interaction_utilisateur(G,fo,R,c);
+	interaction_joueur(G,fo,R,c);
 	flame_close(fo);
 }
