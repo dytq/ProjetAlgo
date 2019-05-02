@@ -143,17 +143,21 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 				else id_2 = trouve_id(click_x,click_y);
 				cmp ++;
 		  }
+	  }
+	  else
+	  {
 		if(cmp == 2)
 		{
 			cmp = 0;
-			affiche_chemin(fo,R,c,id_1,id_2);
 			afficher_chemin(R,id_1,id_2);
-		}
+			affiche_chemin(fo,R,c,id_1,id_2,JAUNE);
+		}  
 		else
 		{
-			//initialisation_objets_graphique(G,fo,c);
-			//usleep(100000); 
-		}  
+			usleep(800000);
+			affiche_chemin(fo,R,c,id_1,id_2,NOIR);
+			initialisation_objets_graphique(G,fo,c);
+		}
 	  }
   }
 }
