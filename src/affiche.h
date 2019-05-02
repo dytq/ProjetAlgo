@@ -11,7 +11,7 @@ void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c);
 
 int trouve_id(int x,int y);
 
-void affiche_chemin(flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin);
+void affiche_chemin(flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin,enum couleur coul);
 
 void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c);
 
