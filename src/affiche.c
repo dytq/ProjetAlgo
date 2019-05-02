@@ -67,9 +67,12 @@ void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c)
 	for (noeud = 0; noeud < TAILLE_GRAPHE; noeud++)
 	{
 		afficher_cercle(fo, &c[noeud]);
-		afficher_voisin(G, fo, c, noeud, debTier1, finTier1);
-		afficher_voisin(G, fo, c, noeud, debTier2, finTier2);
-		afficher_voisin(G, fo, c, noeud, debTier3, finTier3);
+		
+		// Ca sert a rien
+		
+		//~ afficher_voisin(G, fo, c, noeud, debTier1, finTier1);
+		//~ afficher_voisin(G, fo, c, noeud, debTier2, finTier2);
+		//~ afficher_voisin(G, fo, c, noeud, debTier3, finTier3);
 	}	
 }
 int trouve_id(int x,int y)
