@@ -146,13 +146,14 @@ void calculTier2(graphe* G){
 		
 		// pour les arc vers le tier current
 
+		// ERREUR ICI ET AUSSI DANS CALCULTIER3 EN ↓
 		for(j = 0; G->I.compteur[i][tier2] < G->I.proba[i][0]; j++)
 		{
 			if(test_noeuds_max(G, i, noeudsMaxTier2, tier2))
 			{
 				noeuds = calcul_noeuds(G, i, debTier2, finTier2, noeudsMaxTier2, tier2, tier2);
+				// QUAND NOEUDS = -1 CA BUG
 				k = rand()%(poidsMaxTier2 - poidsMinTier2 + 1) + poidsMinTier2;
-				
 				if(noeuds != -1)
 				{
 					G->list[i][noeuds] = k;
@@ -163,6 +164,7 @@ void calculTier2(graphe* G){
 				}
 			}
 		}
+		// ↑
 	 }
 }
 
@@ -191,7 +193,7 @@ void calculTier3(graphe* G){
 		}
 		
 		// pour les arc vers le tier current
-
+		// PAREIL ICI ↓
 		for(j = 0; G->I.compteur[i][tier3] < G->I.proba[i][0]; j++)
 		{
 			if(test_noeuds_max(G, i, noeudsMaxTier3, tier3))
@@ -209,5 +211,6 @@ void calculTier3(graphe* G){
 				}
 			}
 		}
+		// ↑
 	 }
 }
