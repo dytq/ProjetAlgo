@@ -14,7 +14,7 @@ void afficher_voisin(graphe* G, flame_obj_t * fo, cercle_t * c,int sommet, int d
 	{
 		if(G->list[sommet][j] != -1)
 		{
-			afficher_connexion(fo,c,j,G->list[sommet][j],GRIS);
+			afficher_connexion(fo,c,sommet,j,GRIS);
 		}
 	}
 }
@@ -119,9 +119,7 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 	int cmp = 0;
 	int id_1 = 0;
 	int id_2 = 0;
-	
-	//flame_clear_display(fo);
-	
+
 	int click_x, click_y;
 	
 	while (1)

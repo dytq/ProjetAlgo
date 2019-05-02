@@ -1,7 +1,7 @@
 #include "flame.h"
 
-#define TAILLE_ECRAN_HAUTEUR 700
-#define TAILLE_ECRAN_LARGEUR 800
+#define TAILLE_ECRAN_HAUTEUR 630
+#define TAILLE_ECRAN_LARGEUR 630
 
 #define TAILLE_CERCLE 20
 
