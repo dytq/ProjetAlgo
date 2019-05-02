@@ -14,9 +14,11 @@ void afficher_voisin(graphe* G, flame_obj_t * fo, cercle_t * c,int sommet, int d
 	{
 		if(G->list[sommet][j] != -1)
 		{
-			afficher_connexion(fo,c,j,G->list[sommet][j],GRIS);
+			afficher_connexion(fo,c,sommet,j,GRIS);
+			printf("(%d,%d) ", j, G->list[sommet][j]);
 		}
 	}
+	printf("\n");
 }
 
 
@@ -66,9 +68,13 @@ void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c)
 	
 	for (noeud = 0; noeud < TAILLE_GRAPHE; noeud++)
 	{
+		printf("Voisins de %d : \n", noeud);
 		afficher_cercle(fo, &c[noeud]);
+		printf("tier1 : ");
 		afficher_voisin(G, fo, c, noeud, debTier1, finTier1);
+		printf("tier2 : ");
 		afficher_voisin(G, fo, c, noeud, debTier2, finTier2);
+		printf("tier3 : ");
 		afficher_voisin(G, fo, c, noeud, debTier3, finTier3);
 	}	
 }
@@ -96,7 +102,7 @@ void affiche_chemin(flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin) 
 	}
 }
 
-void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
+void interaction_utilisateur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 {
 	XEvent event;
 	int cmp = 0;
@@ -140,6 +146,6 @@ void gestion_fenetre_graphique(graphe* G, routage *R)
 	
 	initialisation_objets_graphique(G,fo,c);
 	
-	interaction_joueur(G,fo,R,c);
+	interaction_utilisateur(G,fo,R,c);
 	flame_close(fo);
 }
