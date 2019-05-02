@@ -125,5 +125,6 @@ void afficher_connexion(flame_obj_t *fo,cercle_t * c,int id_1,int id_2,enum coul
 	if(coul == BLANC) flame_set_color(fo, 255, 255, 255);
 	if(coul == ROUGE) flame_set_color(fo, 255, 0, 0);
 	if(coul == GRIS) flame_set_color(fo, 200, 200, 200);
+	if(coul == NOIR) flame_set_color(fo,0,0,0);
 	afficher_ligne(fo,c[id_1].pos_x,c[id_1].pos_y,c[id_2].pos_x,c[id_2].pos_y);
 }
