@@ -82,7 +82,7 @@ int trouve_id(int x,int y)
 	return ((y / (3 * TAILLE_CERCLE))*10) + (x / (3*TAILLE_CERCLE));
 }
 
-void affiche_chemin (flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin) {
+void affiche_chemin (flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin,enum couleur coul) {
 	int voisin[TAILLE_GRAPHE] = {-1};
 	
 	int i = 0, suiv = R->succ[deb][fin];
@@ -100,14 +100,11 @@ void affiche_chemin (flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin)
 		voisin[i] = fin;
 		
 		int d, e, j;
-		printf("\nListe :\n");
 		for(j = 0 ; j < i; j++)
 		{
 			d = voisin[j]; e = voisin[j+1];
-			afficher_connexion(fo, c, d, e, JAUNE);
-			printf("%d -> ", voisin[j]);
+			afficher_connexion(fo, c, d, e, coul);
 		}
-		printf("%d\n", voisin[j]);
 	}
 	else
 	{
