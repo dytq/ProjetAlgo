@@ -54,8 +54,8 @@ void init_affichage_tier(cercle_t * c, int debut,int fin, int tier,int * x,int *
 		}
 	}
 }
-void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c)
-{
+
+void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c) {
 	int noeud;
 	
 	int x = 1;
@@ -119,6 +119,8 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 	int cmp = 0;
 	int id_1 = 0;
 	int id_2 = 0;
+	int save_id_1 = 0;
+	int save_id_2 = 0;
 
 	int click_x, click_y;
 	
@@ -130,12 +132,23 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 		  if(recupere_clavier(event) == 'q') { break; }
 		  if (event.type == ButtonPress)
 		  {
+			  
 				click_x = event.xkey.x;
 				click_y = event.xkey.y;	
+				
 				colorer_cercle(&c[trouve_id(click_x,click_y)],JAUNE);
 				afficher_cercle(fo,&c[trouve_id(click_x,click_y)]);
-				if(cmp == 0) id_1 = trouve_id(click_x,click_y);
-				else id_2 = trouve_id(click_x,click_y);
+				
+				if(cmp == 0)
+				{
+					save_id_1 = id_1;
+					id_1 = trouve_id(click_x,click_y);
+				}
+				else
+				{
+					save_id_2 = id_2;
+					id_2 = trouve_id(click_x,click_y);
+				}
 				cmp ++;
 		  }
 	  }
@@ -144,14 +157,25 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 		if(cmp == 2)
 		{
 			cmp = 0;
-			afficher_chemin(R,id_1,id_2);
-			affiche_chemin(fo,R,c,id_1,id_2,JAUNE);
+			affiche_chemin ( fo, R, c, save_id_1, save_id_2, NOIR);
+			initialisation_objets_graphique ( G, fo, c);
+			
+			afficher_chemin (R, id_1, id_2);
+			affiche_chemin (fo, R, c, id_1, id_2, JAUNE);
+			
+			colorer_cercle( &c[id_1], JAUNE);
+			colorer_cercle( &c[id_2], JAUNE);
+			
+			afficher_cercle(fo, &c[id_1]);
+			afficher_cercle(fo, &c[id_2]);
 		}  
 		else
 		{
 			usleep(800000);
-			affiche_chemin(fo,R,c,id_1,id_2,NOIR);
-			initialisation_objets_graphique(G,fo,c);
+			// Ca fait lager ca
+			
+			//~ affiche_chemin(fo,R,c,id_1,id_2,NOIR);
+			//~ initialisation_objets_graphique(G,fo,c);
 		}
 	  }
   }

@@ -1,9 +1,9 @@
 #include "flame.h"
 
-#define TAILLE_ECRAN_HAUTEUR 630
-#define TAILLE_ECRAN_LARGEUR 630
+#define TAILLE_ECRAN_HAUTEUR 500
+#define TAILLE_ECRAN_LARGEUR 500
 
-#define TAILLE_CERCLE 20
+#define TAILLE_CERCLE 15
 
 /* Définir la couleur 8 bits */
 typedef unsigned char byte;
