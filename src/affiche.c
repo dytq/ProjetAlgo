@@ -143,12 +143,29 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 				if(cmp == 0)
 				{
 					save_id_1 = id_1;
+					save_id_2 = id_2;
 					id_1 = trouve_id(click_x,click_y);
+					
+					// Permet d'éffacer les traits
+					affiche_chemin ( fo, R, c, save_id_1, save_id_2, NOIR);
+					affiche_croix(fo, c[save_id_2].pos_x, c[save_id_2].pos_y, NOIR);
+					initialisation_objets_graphique ( G, fo, c);
+					
+					// Coloris les cercles
+					colorer_cercle( &c[id_1], JAUNE);
+					
+					// Affiche les cercles
+					afficher_cercle(fo, &c[id_1]);
 				}
 				else
 				{
-					save_id_2 = id_2;
 					id_2 = trouve_id(click_x,click_y);
+					
+					// Coloris les cercles
+					colorer_cercle( &c[id_2], JAUNE);
+					
+					// Affiche les cercles
+					afficher_cercle(fo, &c[id_2]);
 				}
 				cmp ++;
 		  }
@@ -158,22 +175,10 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 		if(cmp == 2)
 		{
 			cmp = 0;
-			// Permet d'éffacer les traits
-			affiche_chemin ( fo, R, c, save_id_1, save_id_2, NOIR);
-			affiche_croix(fo, c[save_id_2].pos_x, c[save_id_2].pos_y, NOIR);
-			initialisation_objets_graphique ( G, fo, c);
 			
 			// Affiche les chemin
 			afficher_chemin (R, id_1, id_2);
 			affiche_chemin (fo, R, c, id_1, id_2, JAUNE);
-			
-			// Coloris les cercles
-			colorer_cercle( &c[id_1], JAUNE);
-			colorer_cercle( &c[id_2], JAUNE);
-			
-			// Affiche les cercles
-			afficher_cercle(fo, &c[id_1]);
-			afficher_cercle(fo, &c[id_2]);
 			
 			// Affiche debut
 			
