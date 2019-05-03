@@ -20,24 +20,40 @@ graphe* init_graphe(){
 	}
 	
 	// struct Insert
-	for(i = 0; i < TAILLE_GRAPHE; i++)
+	int found = 0;
+	int cmp2;
+	while(!found)
 	{
-		if( i < nbTier1 )
+		cmp2 = 0;
+		for(i = 0; i < TAILLE_GRAPHE; i++)
 		{
-			G->I.proba[i][0] = 0;
+			if( i < nbTier1 )
+			{
+				G->I.proba[i][0] = 0;
+			}
+			if( i >= debTier2 && i < finTier2)
+			{
+				p = rand()%2 + 2;
+				G->I.proba[i][0] = p;
+			}
+			if( i >= debTier3 && i < finTier3)
+			{
+				G->I.proba[i][0] = 1;
+			}
+			for(j = 0; j < 3; j++)
+			{
+				G->I.compteur[i][j] = 0;
+			}
 		}
-		if( i >= debTier2 && i < finTier2)
+		
+		for(i = debTier2; i < finTier2; i++)
 		{
-			p = rand()%2 + 2;
-			G->I.proba[i][0] = p;
+			cmp2 += G->I.proba[i][0] = p;
 		}
-		if( i >= debTier3 && i < finTier3)
+		
+		if( cmp2 % 2 == 0 )
 		{
-			G->I.proba[i][0] = 1;
-		}
-		for(j = 0; j < 3; j++)
-		{
-			G->I.compteur[i][j] = 0;
+			found = 1;
 		}
 	}
 	return G;
@@ -147,7 +163,8 @@ void calculTier2(graphe* G){
 		// pour les arc vers le tier current
 
 		// ERREUR ICI ET AUSSI DANS CALCULTIER3 EN ↓
-		for(j = 0; G->I.compteur[i][tier2] < G->I.proba[i][0]; j++)
+		// | j'ai ajouté "j < G->I.proba[i][0]" et ca regle le probleme car du coup le graphe n'est pas connexe et tant que le graphe n'est pas conexxe on recalcul le graphe
+		for(j = 0; G->I.compteur[i][tier2] < G->I.proba[i][0] && j < G->I.proba[i][0]; j++)
 		{
 			if(test_noeuds_max(G, i, noeudsMaxTier2, tier2))
 			{
@@ -193,8 +210,8 @@ void calculTier3(graphe* G){
 		}
 		
 		// pour les arc vers le tier current
-		// PAREIL ICI ↓
-		for(j = 0; G->I.compteur[i][tier3] < G->I.proba[i][0]; j++)
+		// PAREIL ICI ↓ | j'ai ajouté "j < G->I.proba[i][0]" et ca regle le probleme car du coup le graphe n'est pas connexe et tant que le graphe n'est pas conexxe on recalcul le graphe
+		for(j = 0; G->I.compteur[i][tier3] < G->I.proba[i][0] && j < G->I.proba[i][0]; j++)
 		{
 			if(test_noeuds_max(G, i, noeudsMaxTier3, tier3))
 			{

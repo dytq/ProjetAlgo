@@ -41,12 +41,12 @@ int main()
 	
 	calcul_graphe(G);
 		
-	if(test_connexe(G)){
-		routage* R = init(G, TAILLE_GRAPHE);
-		calcul_routage(R);
-		gestion_fenetre_graphique(G,R); // fonction bloquante
-		libere_routage(R);
-	}
+	//~ if(test_connexe(G)){
+		//~ routage* R = init(G, TAILLE_GRAPHE);
+		//~ calcul_routage(R);
+		//~ gestion_fenetre_graphique(G,R); // fonction bloquante
+		//~ libere_routage(R);
+	//~ }
 	free(G);
 	return 0;
 }
