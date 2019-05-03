@@ -1,20 +1,7 @@
 /**
- * Bibliothèque de gestion d'un graphe 
- * 
- * Description:
- * Cette bibliothèque permet de dessiner des cercles et des lignes.
+ * Bibliothèque de gestion d'un graphe: 
+ * Cette bibliothèque permet de dessiner des cercles, des lignes et des croix.
  * Elle a été créer afin de manipuler des graphes simplements.
- * 
- * @version_alpha : 
- * C'est une version fork de flame11 based on X11 by Yaspr
- * -> https://github.com/yaspr/flame11
- * 
- * @autor : 
- * Dedarally Taariq
- * -> https://github.com/D-54/Graph_Bibliotheque
- * 
- * @version : 
- * 1.0 mai 2019
  * */
 
 #include <time.h>

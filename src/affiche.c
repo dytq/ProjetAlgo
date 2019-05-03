@@ -9,14 +9,7 @@
 void afficher_voisin(graphe* G, flame_obj_t * fo, cercle_t * c,int sommet, int deb, int fin)
 {
 	int j;
-
-	for(j = deb; j < fin; j++)
-	{
-		if(G->list[sommet][j] != -1)
-		{
-			afficher_connexion(fo,c,sommet,j,GRIS);
-		}
-	}
+	for(j = deb; j < fin; j++) if(G->list[sommet][j] != -1) { afficher_connexion(fo,c,sommet,j,GRIS); }
 }
 
 
@@ -55,11 +48,14 @@ void init_affichage_tier(cercle_t * c, int debut,int fin, int tier,int * x,int *
 	}
 }
 
-void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c) {
+void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c)
+{
 	int noeud;
 	
 	int x = 1;
 	int y = 1;
+	
+	// > Initialise les coordonnées des cercles
 	init_affichage_tier(c,debTier1,finTier1,tier1,&x,&y);
 	init_affichage_tier(c,debTier2,finTier2,tier2,&x,&y);
 	init_affichage_tier(c,debTier3,finTier3,tier3,&x,&y);
@@ -67,14 +63,13 @@ void initialisation_objets_graphique(graphe *G,flame_obj_t * fo,cercle_t * c) {
 	for (noeud = 0; noeud < TAILLE_GRAPHE; noeud++)
 	{
 		afficher_cercle(fo, &c[noeud]);
-		
-		// Ca sert a rien
-		
+		// > Affichage des connexions mais c'est illisble
 		//~ afficher_voisin(G, fo, c, noeud, debTier1, finTier1);
 		//~ afficher_voisin(G, fo, c, noeud, debTier2, finTier2);
 		//~ afficher_voisin(G, fo, c, noeud, debTier3, finTier3);
 	}	
 }
+
 int trouve_id(int x,int y)
 {
 	x -= (2 * TAILLE_CERCLE);
@@ -82,7 +77,8 @@ int trouve_id(int x,int y)
 	return ((y / (3 * TAILLE_CERCLE))*10) + (x / (3*TAILLE_CERCLE));
 }
 
-void affiche_chemin (flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin,enum couleur coul) {
+void affiche_chemin (flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin,enum couleur coul)
+{
 	int voisin[TAILLE_GRAPHE] = {-1};
 	
 	int i = 0, suiv = R->succ[deb][fin];
@@ -113,7 +109,7 @@ void affiche_chemin (flame_obj_t * fo,routage* R, cercle_t * c,int deb, int fin,
 }
 
 
-void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
+void interaction_user(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 {
 	XEvent event;
 	int cmp = 0;
@@ -132,7 +128,7 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 		  if(recupere_clavier(event) == 'q') { break; }
 		  if (event.type == ButtonPress)
 		  {
-				// Récupere les coordonée
+				// Récupere les coordonées
 				click_x = event.xkey.x;
 				click_y = event.xkey.y;	
 				
@@ -176,7 +172,7 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 		{
 			cmp = 0;
 			
-			// Affiche les chemin
+			// Affiche les chemins
 			afficher_chemin (R, id_1, id_2);
 			affiche_chemin (fo, R, c, id_1, id_2, JAUNE);
 			
@@ -185,14 +181,6 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 			// Affiche arrivé
 			affiche_croix(fo, c[id_2].pos_x, c[id_2].pos_y, BLANC);
 		}  
-		else
-		{
-			usleep(800000);
-			// Ca fait lager ca
-			
-			//~ affiche_chemin(fo,R,c,id_1,id_2,NOIR);
-			//~ initialisation_objets_graphique(G,fo,c);
-		}
 	  }
   }
 }
@@ -202,10 +190,15 @@ void gestion_fenetre_graphique(graphe* G, routage *R)
 	// > Initialisation du canvas:
 	flame_obj_t * fo = init_canvas();
 	
+	// > Allocation de mémoire de la structure de donnée d'un cercle
 	cercle_t c[TAILLE_GRAPHE];
 	
+	// > Initialise les connexions et les cercles
 	initialisation_objets_graphique(G,fo,c);
 	
-	interaction_joueur(G,fo,R,c);
+	// > Gestion des interaction utilisateur machine
+	interaction_user(G,fo,R,c);
+	
+	// > Fermeture du canvas
 	flame_close(fo);
 }

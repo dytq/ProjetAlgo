@@ -55,5 +55,3 @@ moteur_graphique.o: moteur_graphique.c *.h
 clean:
 	@echo netoyage des données supression de: *.o
 	@rm *.o
-test:
-	

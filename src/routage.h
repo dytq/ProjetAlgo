@@ -26,13 +26,6 @@ routage* init(graphe* G, int taille);
 void Floyd_Warshall(routage* R, int taille);
 
 /**
- * Affichage de la table de root
- * @param table de root 
- * @param taille du graphe
- * */
-void affichage(routage* R, int taille);
-
-/**
  * Libération de mémoire de la table de rootage
  * @param table de root
  * */

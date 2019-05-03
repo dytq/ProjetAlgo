@@ -11,8 +11,8 @@ typedef struct {
 
 // Graphe représenté par une liste d'adjacence
 typedef struct { 
-  	int list[TAILLE_GRAPHE][TAILLE_GRAPHE]; 		// >pointe vers 100 listes** qui pointe chacune vers 3 liste* ( qui sont les liste de voisin vers un tier1, tier2, tier3) qui pointe vers une liste
-  	insert I;			// >permet de bien initialiser le graphe
+  	int list[TAILLE_GRAPHE][TAILLE_GRAPHE]; 	// >pointe vers 100 listes** qui pointe chacune vers 3 liste* ( qui sont les liste de voisin vers un tier1, tier2, tier3) qui pointe vers une liste
+  	insert I;									// >permet de bien initialiser le graphe
 } graphe;
 
 // Génére un graphe
@@ -20,7 +20,9 @@ typedef struct {
 graphe* init_graphe();
 
 
-// Verifie si le sommet i est dans la liste de j et inversement( meme si ca sert a rien car quand on ajoute un voisin a un sommet on ajoute aussi le sommet au voisin ) est dans la liste
+// Verifie si le sommet i est dans la liste de j et inversement
+//( meme si ca sert a rien car quand on ajoute un voisin a un sommet on
+// ajoute aussi le sommet au voisin ) est dans la liste
 // @param G le graphe
 // @param i sommet
 // @param etat_i dans quel tier est le sommet i

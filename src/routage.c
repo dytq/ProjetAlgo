@@ -61,37 +61,6 @@ void Floyd_Warshall(routage* R, int taille) {
 	}
 }
 
-void affichage(routage* R, int taille) {
-	//~ int i, j;
-	//~ printf("Matrice :\n");
-	
-	//~ for(i = 0; i < taille; ++i)
-	//~ {
-		//~ for(j = 0; j < taille; ++j)
-		//~ {
-			//~ printf("|%3d|", R->poids[i][j]);
-		//~ }
-		//~ printf("\n");
-	//~ }
-	//~ printf("\n");
-	
-	//~ printf("Pere :\n");
-	//~ for(i = 0; i < taille; ++i)
-	//~ {
-		//~ for(j = 0; j < taille; ++j)
-		//~ {
-			//~ printf("|S%2d|", R->pere[i][j]);
-		//~ }
-		//~ printf("\n");
-	//~ }
-	//~ printf("\n");
-}
-
-void libere_routage(routage* R) {
-	
-	free(R);
-}
-
 void afficher_chemin(routage* R, int deb, int fin) {
 	int stock_deb = deb;
 	int voisin[TAILLE_GRAPHE] = {-1};
@@ -120,3 +89,5 @@ void afficher_chemin(routage* R, int deb, int fin) {
 		printf("error\n");
 	}
 }
+
+void libere_routage(routage* R) { free(R); }

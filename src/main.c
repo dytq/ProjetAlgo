@@ -10,15 +10,10 @@
 #include "affiche.h"
 
 int test_connexe(graphe* G) {
-	int connexe = parcours_graphe(G);
-	if(connexe == 1)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
+	int est_connexe = parcours_graphe(G);
+	
+	if(est_connexe) { return 1; }
+	return 0;
 }
 
 void calcul_graphe(graphe* G) 
@@ -34,23 +29,27 @@ void calcul_routage(routage* R) {
 
 int main()
 {	
-	srand(time(NULL));
+	srand(time(NULL)); // > graine aléatoire 
+	
 	graphe* G = init_graphe(TAILLE_GRAPHE);
 	
+	/* Tant que le graphe n'est pas connexe on recalcul le graphe */ 
 	do
 	{
 		calcul_graphe(G);
 	} while( !test_connexe(G) );
+
+	printf("\nLe graphe est connexe\n");
 	
-	if( test_connexe(G) )
-	{
-		printf("\nLe graphe est connexe\n");
-		routage* R = init(G, TAILLE_GRAPHE);
-		calcul_routage(R);
-		gestion_fenetre_graphique(G,R); // fonction bloquante
-		libere_routage(R);
-	}
+	routage* R = init(G, TAILLE_GRAPHE);
+	calcul_routage(R);
 	
+	/* Gestion de la fenetre graphique: fonction bloquante */ 
+	gestion_fenetre_graphique(G,R);
+	
+	/* Libérations des structures de données utilisées */
+	libere_routage(R);	
 	free(G);
+	
 	return 0;
 }
