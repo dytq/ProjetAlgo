@@ -108,7 +108,7 @@ void afficher_chemin(routage* R, int deb, int fin) {
 	{
 		voisin[i] = fin;
 		
-		printf("\nListe :\n%d", stock_deb);
+		printf("\nChemin de %d à %d :\n%d", stock_deb, fin, stock_deb);
 		for(int j = 0 ; j < i+1; j++)
 		{
 			printf(" -> %d", voisin[j]);

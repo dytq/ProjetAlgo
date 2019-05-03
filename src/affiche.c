@@ -160,6 +160,7 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 			cmp = 0;
 			// Permet d'éffacer les traits
 			affiche_chemin ( fo, R, c, save_id_1, save_id_2, NOIR);
+			affiche_croix(fo, c[save_id_2].pos_x, c[save_id_2].pos_y, NOIR);
 			initialisation_objets_graphique ( G, fo, c);
 			
 			// Affiche les chemin
@@ -173,6 +174,11 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 			// Affiche les cercles
 			afficher_cercle(fo, &c[id_1]);
 			afficher_cercle(fo, &c[id_2]);
+			
+			// Affiche debut
+			
+			// Affiche arrivé
+			affiche_croix(fo, c[id_2].pos_x, c[id_2].pos_y, BLANC);
 		}  
 		else
 		{

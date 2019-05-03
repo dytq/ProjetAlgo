@@ -129,3 +129,11 @@ void afficher_connexion(flame_obj_t *fo, cercle_t * c, int id_1, int id_2, enum 
 	if(coul == JAUNE) flame_set_color(fo, 255, 255, 0);
 	afficher_ligne(fo, c[id_1].pos_x, c[id_1].pos_y, c[id_2].pos_x, c[id_2].pos_y);
 }
+
+void affiche_croix(flame_obj_t *fo, int x, int y, enum couleur coul) {
+	if(coul == BLANC) flame_set_color(fo, 255, 255, 255);
+	if(coul == NOIR) flame_set_color(fo, 0, 0, 0);
+	
+	afficher_ligne(fo, x - 10, y - 10, x + 10, y + 10);
+	afficher_ligne(fo, x - 10, y + 10, x + 10, y - 10);
+}

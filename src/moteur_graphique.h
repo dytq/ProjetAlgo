@@ -53,3 +53,5 @@ void colorer_cercle(cercle_t * c,enum couleur coul);
 flame_obj_t * init_canvas();
 /* Permet d'afficher les connexion entre les objets symbolisé par un trait */ 
 void afficher_connexion(flame_obj_t *fo,cercle_t * c,int id_1,int id_2,enum couleur coul);
+
+void affiche_croix(flame_obj_t *fo,  int x, int y, enum couleur coul);
