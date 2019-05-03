@@ -132,10 +132,11 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 		  if(recupere_clavier(event) == 'q') { break; }
 		  if (event.type == ButtonPress)
 		  {
-			  
+				// Récupere les coordonée
 				click_x = event.xkey.x;
 				click_y = event.xkey.y;	
 				
+				// colorie et affiche les cercles
 				colorer_cercle(&c[trouve_id(click_x,click_y)],JAUNE);
 				afficher_cercle(fo,&c[trouve_id(click_x,click_y)]);
 				
@@ -157,15 +158,19 @@ void interaction_joueur(graphe * G,flame_obj_t * fo,routage * R,cercle_t * c)
 		if(cmp == 2)
 		{
 			cmp = 0;
+			// Permet d'éffacer les traits
 			affiche_chemin ( fo, R, c, save_id_1, save_id_2, NOIR);
 			initialisation_objets_graphique ( G, fo, c);
 			
+			// Affiche les chemin
 			afficher_chemin (R, id_1, id_2);
 			affiche_chemin (fo, R, c, id_1, id_2, JAUNE);
 			
+			// Coloris les cercles
 			colorer_cercle( &c[id_1], JAUNE);
 			colorer_cercle( &c[id_2], JAUNE);
 			
+			// Affiche les cercles
 			afficher_cercle(fo, &c[id_1]);
 			afficher_cercle(fo, &c[id_2]);
 		}  
