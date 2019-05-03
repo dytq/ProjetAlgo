@@ -83,10 +83,9 @@ Cette structure contient 2 champs :
 
 Ce tableau représente le poids minimum pour aller d'un sommet vers un autre. Par exemple, prenons i le sommet de départ et j le sommet d' arrivé. poids[i][j] indique le poids minimum pour aller de i à j.
 
-\subsection{Père}
+\subsection{Successeur}
 
-Ce tableau représente le père du sommet d'arrivé en prenant compte du plus petit chemin.\\
-Par exemple on prend 3 sommet $i, j$ et $k$. Le chemin le plus court pour aller de $i$ à $j$ est : $i \rightarrow ... \rightarrow k \rightarrow j$. Donc dans le tableau pere$[i][j]$ il y aura $k$.
+Ce tableau représente les noeuds à qui il faut envoyé le message sachant le destinataire. Par exemple le sommet i est l' envoyeur, j le destinataire, donc le sommet k = succ[i][j] est le sommet à qui le sommet i doit envoyer le message pour que le chemin entre i et j soit le plus cours.
 
 \chapter{Description du projet}
 
