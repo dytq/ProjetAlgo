@@ -12,7 +12,7 @@
 int test_connexe(graphe* G) {
 	int est_connexe = parcours_graphe(G);
 	
-	if(est_connexe) { return 1; }
+	if(est_connexe == 1) { return 1; }
 	return 0;
 }
 
