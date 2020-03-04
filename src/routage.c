@@ -39,7 +39,7 @@ routage* init(graphe* G, int taille) {
 	}
 	return R;
 }
-
+/* Peu optimiser car on utilise pas des arcs a poids négatifs -> trop complexe */
 void Floyd_Warshall(routage* R, int taille) {
 	int i, j, k;
 	
@@ -60,7 +60,14 @@ void Floyd_Warshall(routage* R, int taille) {
 		}
 	}
 }
-
+/* par conséquent on utilise dijsktra */
+void Dijkstra(routage * R,int taille)
+{
+	/* 1. On initialise le tableau pour dijkstra 
+	 * 2. On rentre dans la boucle: On fait un thread qui récupére chaque voisin rapidement
+	 * 3. pas de sortie
+	 * */
+}
 void afficher_chemin(routage* R, int deb, int fin) {
 	int stock_deb = deb;
 	int voisin[TAILLE_GRAPHE] = {-1};

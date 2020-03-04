@@ -25,6 +25,8 @@ routage* init(graphe* G, int taille);
  * */
 void Floyd_Warshall(routage* R, int taille);
 
+void Dijkstra(routage* R,int taille);
+
 /**
  * Libération de mémoire de la table de rootage
  * @param table de root

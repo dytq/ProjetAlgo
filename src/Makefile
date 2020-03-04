@@ -13,12 +13,12 @@ all: graph main.o affiche.o graph.o connexe.o routage.o flame.o moteur_graphique
 # Run:
 run: 
 	@echo -n lancement du programme:  
-	./graph 
+	./graph.out 
 	@echo fin de programme:
 	
 # Edition de lien du programme principal
 graph: main.o graph.o routage.o connexe.o affiche.o moteur_graphique.o
-	${GCC} -o $@ $^ ${OPTIM} ${WARN} ${FLAME}
+	${GCC} -o $@.out $^ ${OPTIM} ${WARN} ${FLAME}
 	${MSG}: fichier executable
 
 # Compilation du programme principal
